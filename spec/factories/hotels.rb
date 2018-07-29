@@ -6,5 +6,6 @@ FactoryGirl.define do
     latitude { Faker::Address.latitude }
     rating { Faker::Number.between(1, 10) }
     stars { rand(1..5) }
+    city
   end
 end

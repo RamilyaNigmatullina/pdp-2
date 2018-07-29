@@ -1,0 +1,8 @@
+en:
+  simple_form:
+    placeholders:
+      hotel:
+        search: Search
+        stars: Stars Amount
+        min_rating: Min Rating
+        max_rating: Max Rating
