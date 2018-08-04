@@ -10,3 +10,5 @@ ul.top-bar-right.menu.dropdown(data-dropdown-menu)
     = active_link_to "Sign up", new_user_registration_path, active: :exclusive, wrap_tag: :li
     = active_link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path,
       active: :exclusive, wrap_tag: :li
+    = active_link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path,
+      active: :exclusive, wrap_tag: :li
