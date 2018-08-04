@@ -20,14 +20,12 @@ describe Users::FindOrCreateUserAuthentication do
 
   describe "#call" do
     context "when user doesn't have user authentication" do
-      let(:user_authentication) { UserAuthentication.last }
-
       it { is_expected.to be_success }
 
       it "creates user authentication" do
         expect { context }.to change { UserAuthentication.count }.by(1)
 
-        expect(user_authentication).to have_attributes(expected_attributes)
+        expect(UserAuthentication.last).to have_attributes(expected_attributes)
       end
     end
 
@@ -49,7 +47,7 @@ describe Users::FindOrCreateUserAuthentication do
       it { is_expected.to be_success }
 
       it "doesn't create user authentication" do
-        expect { context }.not_to change { UserAuthentication.count }
+        expect { context }.not_to change(UserAuthentication, :count)
       end
     end
   end

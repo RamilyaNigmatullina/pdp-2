@@ -38,7 +38,7 @@ describe Users::FindOrCreateUser do
       it { is_expected.to be_success }
 
       it "finds user by email" do
-        expect { context }.not_to change { User.count }
+        expect { context }.not_to change(User, :count)
 
         expect(context.user).to eq(user)
       end
