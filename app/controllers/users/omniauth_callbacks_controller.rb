@@ -1,10 +1,10 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
-    bar
+    authenticate
   end
 
   def google_oauth2
-    bar
+    authenticate
   end
 
   def failure
@@ -13,11 +13,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   private
 
-  def bar
+  def authenticate
     if authenticate_user.success?
       sign_in_and_redirect authenticate_user.user, event: :authentication
     else
-      redirect_to root_path, alert: authenticate_user.message
+      redirect_to root_path, alert: authenticate_user.error
     end
   end
 

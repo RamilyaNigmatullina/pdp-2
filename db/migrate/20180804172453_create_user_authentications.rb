@@ -8,6 +8,6 @@ class CreateUserAuthentications < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    add_index(:user_authentications, %i[provider uid], unique: true)
+    add_index :user_authentications, %i[provider uid], unique: true
   end
 end
