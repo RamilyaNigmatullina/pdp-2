@@ -1,7 +1,7 @@
 {
   "name": "rails-base",
   "scripts": {
-    "postdeploy": "bundle exec rake db:schema:load db:development"
+    "postdeploy": "bundle exec rake db:schema:load db:seed"
   },
   "env": {
     "HOST": { "required": true },
