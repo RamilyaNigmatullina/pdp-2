@@ -22,7 +22,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def authenticate_user
-    @authenticate_user ||= Users::Authenticate.call(auth_data: facebook_auth_data)
+    @authenticate_user ||= Users::Authenticate.call(auth_data: authentication_hash)
   end
 
   def authentication_hash
