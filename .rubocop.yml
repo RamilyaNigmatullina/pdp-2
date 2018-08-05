@@ -67,6 +67,9 @@ Metrics/LineLength:
 Metrics/BlockLength:
   Enabled: false
 
+ClassAndModuleChildren:
+  Enabled: false
+
 Layout/AlignParameters:
   EnforcedStyle: with_fixed_indentation
   SupportedStyles:
