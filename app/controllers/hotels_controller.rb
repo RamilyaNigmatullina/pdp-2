@@ -24,12 +24,8 @@ class HotelsController < ApplicationController
 
   def coordinates
     @coordinates ||= {
-      latitude: geocoder.latitude,
-      longitude: geocoder.longitude
+      latitude: request.location.latitude,
+      longitude: request.location.longitude
     }
-  end
-
-  def geocoder
-    @geocoder ||= Geocoder.search(request.ip).first
   end
 end

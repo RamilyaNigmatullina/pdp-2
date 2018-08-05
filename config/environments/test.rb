@@ -45,7 +45,7 @@ Rails.application.configure do
 end
 
 class ActionDispatch::Request
-  def ip
-    "176.52.96.112"
+  def location
+    Geocoder.search("176.52.96.112").first
   end
 end
