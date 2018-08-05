@@ -43,3 +43,9 @@ Rails.application.configure do
   # Run specs in order
   config.active_support.test_order = :sorted
 end
+
+class ActionDispatch::Request
+  def ip
+    "176.52.96.112"
+  end
+end

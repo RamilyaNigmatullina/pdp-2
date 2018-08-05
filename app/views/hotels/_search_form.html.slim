@@ -10,4 +10,7 @@
   = f.input :max_rating, as: :integer, label: false,
       input_html: { value: filter_params[:max_rating], min: 0, max: 10, class: "filter-field" }
 
+  = f.input :radius, as: :integer, label: false,
+      input_html: { value: filter_params[:radius][:radius], min: 0, class: "filter-field" }
+
   = f.submit "Find", class: "button"

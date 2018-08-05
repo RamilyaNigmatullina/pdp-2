@@ -55,4 +55,33 @@ describe FilteredHotels do
       it { is_expected.to match_array([hotel_1]) }
     end
   end
+
+  describe "#by_radius" do
+    context "with valid radius params" do
+      let(:filter_params) do
+        {
+          radius: {
+            radius: 5,
+            latitude: 55.7679,
+            longitude: 49.1631
+          }
+        }
+      end
+
+      it { is_expected.to match_array([hotel_1]) }
+    end
+
+    context "with invalid radius params" do
+      let(:filter_params) do
+        {
+          radius: {
+            latitude: 55.7679,
+            longitude: 49.1631
+          }
+        }
+      end
+
+      it { is_expected.to match_array([hotel_1, hotel_2]) }
+    end
+  end
 end
