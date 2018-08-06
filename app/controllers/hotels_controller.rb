@@ -18,8 +18,8 @@ class HotelsController < ApplicationController
 
   def filter_params
     params.fetch(:hotel, {})
-      .permit(:search, :stars, :min_rating, :max_rating, :radius)
-      .merge(coordinates: coordinates).to_h
+          .permit(:search, :stars, :min_rating, :max_rating, :radius)
+          .merge(coordinates: coordinates).to_h
   end
 
   def coordinates
