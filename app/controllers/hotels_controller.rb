@@ -23,6 +23,11 @@ class HotelsController < ApplicationController
   end
 
   def coordinates
-    @coordinates ||= [request.location.latitude, request.location.longitude]
+    @coordinates ||=
+      if cookies[:geolocation]
+        cookies[:geolocation].split("&")
+      else
+        [request.location.latitude, request.location.longitude]
+      end
   end
 end
