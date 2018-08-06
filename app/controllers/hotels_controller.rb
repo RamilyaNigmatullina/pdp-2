@@ -9,7 +9,7 @@ class HotelsController < ApplicationController
   private
 
   def decorated_hotels
-    HotelDecorator.decorate_collection(filtered_hotels, context: { coordinates: coordinates.values })
+    HotelDecorator.decorate_collection(filtered_hotels, context: { coordinates: coordinates })
   end
 
   def filtered_hotels
@@ -17,15 +17,12 @@ class HotelsController < ApplicationController
   end
 
   def filter_params
-    params.fetch(:hotel, {}).permit(:search, :stars, :min_rating, :max_rating, :radius).to_h.tap do |hash|
-      hash[:radius] = hash.slice(:radius).merge(coordinates)
-    end
+    params.fetch(:hotel, {})
+      .permit(:search, :stars, :min_rating, :max_rating, :radius)
+      .merge(coordinates: coordinates).to_h
   end
 
   def coordinates
-    @coordinates ||= {
-      latitude: request.location.latitude,
-      longitude: request.location.longitude
-    }
+    @coordinates ||= [request.location.latitude, request.location.longitude]
   end
 end

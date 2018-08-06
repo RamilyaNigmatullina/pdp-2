@@ -1,4 +1,6 @@
 class FilteredHotels
+  ALLOWED_PARAMS = %i[search stars min_rating max_rating radius].freeze
+
   SEARCH_SQL = <<-SQL.freeze
     lower(hotels.name) similar to lower(:search) ESCAPE '^' OR
     lower(cities.name) similar to lower(:search) ESCAPE '^'
@@ -13,7 +15,7 @@ class FilteredHotels
   end
 
   def all
-    filter_params.reduce(relation) do |relation, (key, value)|
+    filter_params.slice(*ALLOWED_PARAMS).reduce(relation) do |relation, (key, value)|
       next relation if value.blank?
 
       send("by_#{key}", relation, value)
@@ -38,17 +40,9 @@ class FilteredHotels
     relation.where("hotels.rating <= ?", max_rating.to_f)
   end
 
-  def by_radius(relation, params)
-    return relation unless required_keys_present?(params)
+  def by_radius(relation, radius)
+    return relation if filter_params[:coordinates].all?(&:blank?)
 
-    relation.near(coordinates(params), params[:radius])
-  end
-
-  def required_keys_present?(params)
-    %i[latitude latitude radius].all? { |key| params[key].present? }
-  end
-
-  def coordinates(params)
-    [params[:latitude], params[:longitude]]
+    relation.near(filter_params[:coordinates], radius)
   end
 end

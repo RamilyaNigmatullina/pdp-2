@@ -55,3 +55,9 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end
+
+class ActionDispatch::Request
+  def location
+    Geocoder.search("176.59.116.134").first
+  end
+end

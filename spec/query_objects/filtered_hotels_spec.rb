@@ -57,27 +57,22 @@ describe FilteredHotels do
   end
 
   describe "#by_radius" do
-    context "with valid radius params" do
+    context "with radius param and valid coordinates" do
       let(:filter_params) do
         {
-          radius: {
-            radius: 5,
-            latitude: 55.7679,
-            longitude: 49.1631
-          }
+          radius: 5,
+          coordinates: [55.7679, 49.1631]
         }
       end
 
       it { is_expected.to match_array([hotel_1]) }
     end
 
-    context "with invalid radius params" do
+    context "with radius param and invalid coordinates" do
       let(:filter_params) do
         {
-          radius: {
-            latitude: 55.7679,
-            longitude: 49.1631
-          }
+          radius: 5,
+          coordinates: ["", nil]
         }
       end
 
