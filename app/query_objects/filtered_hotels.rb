@@ -41,7 +41,7 @@ class FilteredHotels
   end
 
   def by_radius(relation, radius)
-    return relation if filter_params[:coordinates].all?(&:blank?)
+    return relation unless filter_params[:coordinates].all?
 
     relation.near(filter_params[:coordinates], radius)
   end
