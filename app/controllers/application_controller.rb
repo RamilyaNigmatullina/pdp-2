@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   include Authentication
   include Authorization
   include BulletHelper
+  include Geolocation
+  include TimezoneSetter
 
   protect_from_forgery with: :exception
 

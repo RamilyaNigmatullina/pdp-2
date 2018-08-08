@@ -9,7 +9,7 @@ class HotelsController < ApplicationController
   private
 
   def decorated_hotels
-    HotelDecorator.decorate_collection(filtered_hotels, context: { coordinates: coordinates })
+    HotelDecorator.decorate_collection(filtered_hotels, context: { coordinates: current_coordinates })
   end
 
   def filtered_hotels
@@ -19,15 +19,6 @@ class HotelsController < ApplicationController
   def filter_params
     params.fetch(:hotel, {})
           .permit(:search, :stars, :min_rating, :max_rating, :radius)
-          .merge(coordinates: coordinates).to_h
-  end
-
-  def coordinates
-    @coordinates ||=
-      if cookies[:geolocation]
-        cookies[:geolocation].split("&")
-      else
-        [request.location.latitude, request.location.longitude]
-      end
+          .merge(coordinates: current_coordinates).to_h
   end
 end

@@ -47,6 +47,7 @@ gem "responders"
 gem "rollbar"
 gem "seedbank"
 gem "stackprof"
+gem "timezone"
 
 group :staging, :production do
   gem "newrelic_rpm"

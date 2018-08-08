@@ -7,6 +7,12 @@ class HotelDecorator < ApplicationDecorator
     format(DISTANCE_TEXT, distance: rounded_distance)
   end
 
+  def formatted_check_in_time
+    return unless object.check_in_time
+
+    I18n.l(object.check_in_time, format: :time)
+  end
+
   private
 
   def rounded_distance
