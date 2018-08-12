@@ -23,3 +23,5 @@ en:
       authenticate:
         failure: "You cannot be signed in. Please try again later."
         invalid_data: "Your data is invalid. Please try again later."
+  pundit:
+    not_authorized_error: "You cannot perform this action."

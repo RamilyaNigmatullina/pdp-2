@@ -3,7 +3,10 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :trackable, :validatable,
     :omniauthable, omniauth_providers: %i[google_oauth2 facebook]
 
-  validates :full_name, presence: true
 
   has_many :user_authentications
+
+  validates :full_name, :role, presence: true
+
+  enum role: { user: "user", admin: "admin" }
 end

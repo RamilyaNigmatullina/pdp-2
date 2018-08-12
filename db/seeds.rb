@@ -1,7 +1,8 @@
 User.create(email: "user@example.com", password: "password")
+User.create(email: "admin@example.com", password: "password", role: "admin")
 
-city = City.create(name: "Казань")
-city_2 = City.create(name: "Москва")
+city = City.create(name: "Kazan")
+city_2 = City.create(name: "Moscow")
 
 Hotel.create(city: city, name: "Hotel complex Tatarstan", address: "Pushkin str. 4, Kazan",
   longitude: 49.12240500000007, latitude: 55.786463, rating: 7.4, stars: 3)
