@@ -4,8 +4,7 @@ describe Users::PrepareParams do
   subject(:context) { described_class.call(authentication_hash: authentication_hash) }
 
   let(:authentication_hash) do
-    build :authentication_hash, provider: "facebook", uid: "1234567",
-      email: "user@example.com", name: "John Smith"
+    build :authentication_hash, provider: "facebook", uid: "1234567", email: "user@example.com", name: "John Smith"
   end
   let(:expected_auth_data) do
     {

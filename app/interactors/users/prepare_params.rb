@@ -23,7 +23,7 @@ class Users::PrepareParams
   end
 
   def auth_data_invalid?
-    !auth_data.map { |k, v| v.present? }.all?
+    !auth_data.map { |_k, v| v.present? }.all?
   end
 
   def error_message

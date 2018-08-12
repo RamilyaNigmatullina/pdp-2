@@ -4,12 +4,10 @@ feature "Sign In" do
   let(:user) { create :user }
   let(:unconfirmed_user) { create :user, :not_confirmed }
   let(:facebook_auth_hash) do
-    build :authentication_hash, provider: "facebook", uid: "1234567",
-      email: "user@example.com", name: "John Smith"
+    build :authentication_hash, provider: "facebook", uid: "1234567", email: "user@example.com", name: "John Smith"
   end
   let(:google_auth_hash) do
-    build :authentication_hash, provider: "google_oauth2", uid: "1234567",
-      email: "user@example.com", name: "John Smith"
+    build :authentication_hash, provider: "google_oauth2", uid: "1234567", email: "user@example.com", name: "John Smith"
   end
   let(:current_user) { User.last }
 
