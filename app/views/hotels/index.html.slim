@@ -1,5 +1,7 @@
 .row
   .medium-10.columns
+    | Текущее время:
+    =< I18n.l(Time.zone.now, format: :time)
     h2 Hotels
 
     = render "search_form"

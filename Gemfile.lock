@@ -82,6 +82,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-webkit (1.15.0)
+      capybara (>= 2.3, < 4.0)
+      json
     choice (0.2.0)
     cliver (0.3.2)
     codeclimate-test-reporter (0.6.0)
@@ -448,6 +451,7 @@ DEPENDENCIES
   bundler-audit
   byebug
   capybara
+  capybara-webkit
   codeclimate-test-reporter
   coffee-rails
   coffeelint
