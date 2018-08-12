@@ -1,6 +1,6 @@
 class GeolocationsController < ApplicationController
   def create
-    cookies[:geolocation] = geolocation_params.values
+    cookies[:geolocation] = geolocation_params.values.join(",")
   end
 
   def destroy

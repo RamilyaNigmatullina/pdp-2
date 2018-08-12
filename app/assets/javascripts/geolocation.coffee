@@ -1,5 +1,5 @@
 class Geolocation
-  geolocationPath = "/geolocations.json"
+  GEOLOCATION_PATH = "/geolocations.json"
 
   getLocation: ->
     if navigator.geolocation
@@ -7,7 +7,7 @@ class Geolocation
 
   saveGeolocation = (position) ->
     $.ajax
-      url: geolocationPath
+      url: GEOLOCATION_PATH
       type: "POST"
       dataType: "json"
       data:
@@ -17,7 +17,7 @@ class Geolocation
 
   deleteGeolocation = ->
     $.ajax
-      url: geolocationPath
+      url: GEOLOCATION_PATH
       type: "DELETE"
       dataType: "json"
 
