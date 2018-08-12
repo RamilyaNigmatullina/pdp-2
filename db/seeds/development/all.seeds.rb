@@ -1,8 +1,8 @@
 FactoryGirl.create(:user, email: "user@example.com")
 FactoryGirl.create(:user, :admin, email: "admin@example.com")
 
-city = FactoryGirl.create(:city, name: "Казань")
-city_2 = FactoryGirl.create(:city, name: "Москва")
+city = FactoryGirl.create(:city, name: "Kazan")
+city_2 = FactoryGirl.create(:city, name: "Moscow")
 
 FactoryGirl.create(:hotel, city: city, name: "Hotel complex Tatarstan", address: "Pushkin str. 4, Kazan",
   longitude: 49.12240500000007, latitude: 55.786463, rating: 7.4, stars: 3)
