@@ -7,10 +7,8 @@ describe Users::FindOrCreateUser do
     {
       provider: "facebook",
       uid: "1234567",
-      info: {
-        email: "user@example.com",
-        name: "Joe Bloggs"
-      }
+      email: "user@example.com",
+      full_name: "Joe Bloggs"
     }
   end
 
@@ -41,24 +39,6 @@ describe Users::FindOrCreateUser do
         expect { context }.not_to change(User, :count)
 
         expect(context.user).to eq(user)
-      end
-    end
-
-    context "when auth data is incorrect" do
-      let(:error_message) { "You cannot be signed in with facebook. Please try again later." }
-      let(:auth_data) do
-        {
-          provider: "facebook",
-          uid: "1234567",
-          email: "user@example.com",
-          name: "Joe Bloggs"
-        }
-      end
-
-      it { is_expected.to be_failure }
-
-      it "provides error" do
-        expect(context.error).to eq(error_message)
       end
     end
   end

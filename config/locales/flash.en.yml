@@ -21,4 +21,5 @@ en:
         alert: '%{resource_name} could not be destroyed.'
     users:
       authenticate:
-        failure: "You cannot be signed in with %{provider}. Please try again later."
+        failure: "You cannot be signed in. Please try again later."
+        invalid_data: "Your data is invalid. Please try again later."

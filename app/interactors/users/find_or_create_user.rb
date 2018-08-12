@@ -14,7 +14,7 @@ class Users::FindOrCreateUser
   private
 
   def find_user
-    User.find_by(email: auth_data[:info][:email])
+    User.find_by(email: auth_data[:email])
   end
 
   def create_user
@@ -23,8 +23,8 @@ class Users::FindOrCreateUser
 
   def create_attributes
     {
-      email: auth_data[:info][:email],
-      full_name: auth_data[:info][:name],
+      email: auth_data[:email],
+      full_name: auth_data[:full_name],
       password: Devise.friendly_token[0, 20],
       confirmed_at: Time.zone.now
     }
