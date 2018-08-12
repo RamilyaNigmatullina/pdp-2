@@ -1,4 +1,5 @@
 User.create(email: "user@example.com", password: "password")
+User.create(email: "admin@example.com", password: "password", role: "admin")
 
 city = City.create(name: "Казань")
 city_2 = City.create(name: "Москва")

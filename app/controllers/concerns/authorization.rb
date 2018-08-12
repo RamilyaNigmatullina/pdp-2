@@ -9,6 +9,8 @@ module Authorization
   private
 
   def user_not_authorized
-    redirect_to(root_path)
+    flash[:notice] = I18n.t(:not_authorized_error, scope: :pundit)
+
+    redirect_to root_path
   end
 end

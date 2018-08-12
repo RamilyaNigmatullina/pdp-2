@@ -1,4 +1,5 @@
 FactoryGirl.create(:user, email: "user@example.com")
+FactoryGirl.create(:user, :admin, email: "admin@example.com")
 
 city = FactoryGirl.create(:city, name: "Казань")
 city_2 = FactoryGirl.create(:city, name: "Москва")
