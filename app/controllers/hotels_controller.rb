@@ -1,4 +1,6 @@
 class HotelsController < ApplicationController
+  DISTANCE = 100_000
+
   expose_decorated :hotels, :decorated_hotels
 
   helper_method :filter_params
@@ -13,7 +15,11 @@ class HotelsController < ApplicationController
   end
 
   def filtered_hotels
-    ::FilteredHotels.new(Hotel.includes(:city).all, filter_params).all
+    ::FilteredHotels.new(fetch_hotels, filter_params).all
+  end
+
+  def fetch_hotels
+    Hotel.near(current_coordinates, DISTANCE).includes(:city)
   end
 
   def filter_params
