@@ -1,0 +1,10 @@
+= simple_form_for hotel  do |f|
+  = f.input :name
+  = f.input :address
+  = f.input :longitude, input_html: { type: "number" }
+  = f.input :latitude, input_html: { type: "number" }
+  = f.input :rating, input_html: { type: "number", min: 0, max: 10 }
+  = f.input :stars, input_html: { type: "number", min: 1, max: 5 }
+  = f.input :city_id, collection: City.all, include_blank: false
+
+  = f.button :submit

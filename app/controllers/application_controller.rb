@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
   private
 
   def define_timezone(&block)
-    binding.pry
     Time.use_zone(timezone, &block)
   end
 

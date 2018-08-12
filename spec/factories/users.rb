@@ -6,13 +6,18 @@ FactoryGirl.define do
     password_confirmation { password }
     confirmed_at 1.hour.ago
     timezone "Moscow"
-  end
+    role "user"
 
-  trait :not_confirmed do
-    confirmed_at nil
+    trait :admin do
+      role "admin"
+    end
 
-    after(:create) do |user|
-      user.update(confirmation_sent_at: 3.days.ago)
+    trait :not_confirmed do
+      confirmed_at nil
+
+      after(:create) do |user|
+        user.update(confirmation_sent_at: 3.days.ago)
+      end
     end
   end
 end

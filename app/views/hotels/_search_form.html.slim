@@ -1,4 +1,4 @@
-= simple_form_for :hotel , method: :get, url: hotels_path, html: { class: "search-form"} do |f|
+= simple_form_for :hotel, method: :get, url: hotels_path, html: { class: "search-form"} do |f|
   = f.input :search, label: false, input_html: { value: filter_params[:search], class: "search-field" }
 
   = f.input :stars, as: :integer, label: false,
