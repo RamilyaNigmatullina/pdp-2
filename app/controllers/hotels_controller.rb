@@ -63,7 +63,7 @@ class HotelsController < ApplicationController
   end
 
   def hotel_params
-    params.fetch(:hotel, {}).permit(:name, :address, :longitude, :latitude, :rating,
+    params.fetch(:hotel, {}).permit(:name, :address, :longitude, :latitude, :rating, :radius,
       :stars, :city_id, :search, :min_rating, :max_rating)
   end
 end
