@@ -1,5 +1,5 @@
-class GeolocationsController < ApplicationController
-  def create
+class GeolocationController < ApplicationController
+  def update
     cookies[:geolocation] = geolocation_params.values.join(",")
   end
 

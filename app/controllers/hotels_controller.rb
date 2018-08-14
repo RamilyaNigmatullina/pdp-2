@@ -1,6 +1,4 @@
 class HotelsController < ApplicationController
-  DISTANCE = 100_000
-
   expose_decorated :hotels, :decorated_hotels
   expose :hotel
 
@@ -38,7 +36,7 @@ class HotelsController < ApplicationController
   private
 
   def decorated_hotels
-    HotelDecorator.decorate_collection(filtered_hotels, context: { coordinates: current_coordinates })
+    HotelDecorator.decorate_collection(filtered_hotels)
   end
 
   def filtered_hotels
@@ -46,7 +44,7 @@ class HotelsController < ApplicationController
   end
 
   def fetch_hotels
-    Hotel.near(current_coordinates, DISTANCE).includes(:city).page(params[:page])
+    Hotel.includes(:city).page(params[:page])
   end
 
   def authorize_resource
@@ -54,12 +52,18 @@ class HotelsController < ApplicationController
   end
 
   def filter_params
-    params.fetch(:hotel, {})
-          .permit(:search, :stars, :min_rating, :max_rating, :radius)
-          .merge(coordinates: current_coordinates).to_h
+    hotel_params.permit(:search, :stars, :min_rating, :max_rating).merge(near: near_params).to_h
+  end
+
+  def near_params
+    {
+      radius: hotel_params[:radius],
+      coordinates: current_coordinates
+    }
   end
 
   def hotel_params
-    params.require(:hotel).permit(:name, :address, :longitude, :latitude, :rating, :stars, :city_id)
+    params.fetch(:hotel, {}).permit(:name, :address, :longitude, :latitude, :rating,
+      :stars, :city_id, :search, :min_rating, :max_rating)
   end
 end

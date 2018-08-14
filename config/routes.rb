@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root to: "hotels#index"
 
   resources :hotels, only: %i[index new create edit update destroy]
-  resource :geolocations, only: %i[create destroy]
+  resource :geolocation, only: %i[update destroy], controller: :geolocation
 end

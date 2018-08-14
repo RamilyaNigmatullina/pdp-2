@@ -19,12 +19,6 @@ describe FilteredHotels do
   it { is_expected.to match_array([hotel_1, hotel_2]) }
 
   describe "#by_search" do
-    context "with city name provided as keyword" do
-      let(:filter_params) { { search: "Kazan" } }
-
-      it { is_expected.to match_array([hotel_1]) }
-    end
-
     context "with hotel name provided as keyword" do
       let(:filter_params) { { search: "AZIMUT Hotel Olympic Moscow" } }
 
@@ -56,12 +50,14 @@ describe FilteredHotels do
     end
   end
 
-  describe "#by_radius" do
+  describe "#by_near" do
     context "with radius param and valid coordinates" do
       let(:filter_params) do
         {
-          radius: 5,
-          coordinates: [55.7679, 49.1631]
+          near: {
+            radius: 5,
+            coordinates: [55.7679, 49.1631]
+          }
         }
       end
 
@@ -71,8 +67,10 @@ describe FilteredHotels do
     context "with radius param and invalid coordinates" do
       let(:filter_params) do
         {
-          radius: 5,
-          coordinates: ["", nil]
+          near: {
+            radius: 5,
+            coordinates: ["", nil]
+          }
         }
       end
 

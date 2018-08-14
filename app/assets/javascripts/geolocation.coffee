@@ -1,5 +1,5 @@
 class Geolocation
-  GEOLOCATION_PATH = "/geolocations.json"
+  GEOLOCATION_PATH = "/geolocation.json"
 
   getLocation: ->
     if navigator.geolocation
@@ -8,7 +8,7 @@ class Geolocation
   saveGeolocation = (position) ->
     $.ajax
       url: GEOLOCATION_PATH
-      type: "POST"
+      type: "PUT"
       dataType: "json"
       data:
         geolocation:

@@ -10,6 +10,6 @@ class HotelDecorator < ApplicationDecorator
   private
 
   def rounded_distance
-    object.distance_to(context[:coordinates]).round(1)
+    object.distance.round(1) if object.respond_to?(:distance)
   end
 end
