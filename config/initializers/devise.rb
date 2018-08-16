@@ -256,5 +256,5 @@ Devise.setup do |config|
   config.omniauth :google_oauth2, ENV.fetch("GOOGLE_CLIENT_ID"), ENV.fetch("GOOGLE_CLIENT_SECRET"),
     info_fields: "profile"
   config.omniauth :facebook, ENV.fetch("FACEBOOK_CLIENT_ID"), ENV.fetch("FACEBOOK_CLIENT_SECRET"),
-    scope: "email,name"
+    scope: "email,default"
 end
