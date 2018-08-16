@@ -16,14 +16,14 @@ class Users::FindOrCreateUser
   private
 
   def find_user
-    find_by_email || find_by_uid_and_provider
+    by_email || by_uid_and_provider
   end
 
-  def find_by_email
+  def by_email
     User.find_by(email: auth_data[:email])
   end
 
-  def find_by_uid_and_provider
+  def by_uid_and_provider
     Identity.find_by(provider: auth_data[:provider], uid: auth_data[:uid])&.user
   end
 

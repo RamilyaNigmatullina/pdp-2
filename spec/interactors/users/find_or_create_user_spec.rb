@@ -37,19 +37,19 @@ describe Users::FindOrCreateUser do
 
         expect(context.user).to eq(user)
       end
+    end
 
-      context "when user changed his email" do
-        let(:user) { create :user, email: "new_email@example.com" }
+    context "when user changed his email" do
+      let(:user) { create :user, email: "new_email@example.com" }
 
-        before { create :identity, user: user, provider: "facebook", uid: "1234567" }
+      before { create :identity, user: user, provider: "facebook", uid: "1234567" }
 
-        it { is_expected.to be_success }
+      it { is_expected.to be_success }
 
-        it "finds user by email" do
-          expect { context }.not_to change(User, :count)
+      it "finds user by email" do
+        expect { context }.not_to change(User, :count)
 
-          expect(context.user).to eq(user)
-        end
+        expect(context.user).to eq(user)
       end
     end
 
@@ -75,14 +75,14 @@ describe Users::FindOrCreateUser do
     subject(:context) { described_class.new(auth_data: auth_data).rollback }
 
     it "destroys created user" do
-      expect { subject }.not_to change { User.count }
+      expect { context }.not_to(change { User.count })
     end
 
     context "when user wasn't created" do
-      let!(:user) { create :user, email: "user@example.com" }
+      before { create :user, email: "user@example.com" }
 
       it "doesn't destroy user" do
-        expect { subject }.not_to change { User.count }
+        expect { context }.not_to(change { User.count })
       end
     end
   end
