@@ -1,14 +1,12 @@
 class Users::PrepareParams
   include Interactor
 
-  TRANSLATE_SCOPE = %i[flash users authenticate].freeze
-
   delegate :authentication_hash, to: :context
 
   def call
     context.auth_data = auth_data
 
-    context.fail!(error: error_message) if auth_data_invalid?
+    context.fail!(error: error) if empty_fields.present?
   end
 
   private
@@ -22,11 +20,14 @@ class Users::PrepareParams
     }
   end
 
-  def auth_data_invalid?
-    !auth_data.map { |_k, v| v.present? }.all?
+  def empty_fields
+    @empty_fields ||= begin
+      fields = auth_data.map { |k, v| k if v.blank? }
+      fields.compact.join(", ").titleize
+    end
   end
 
-  def error_message
-    I18n.t(:invalid_data, scope: TRANSLATE_SCOPE)
+  def error
+    I18n.t(:invalid_data, scope: "interactors.users.authenticate", fields: empty_fields)
   end
 end

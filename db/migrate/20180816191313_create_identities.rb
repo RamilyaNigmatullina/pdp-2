@@ -1,6 +1,6 @@
-class CreateUserAuthentications < ActiveRecord::Migration[5.1]
+class CreateIdentities < ActiveRecord::Migration[5.1]
   def change
-    create_table :user_authentications do |t|
+    create_table :identities do |t|
       t.references :user, index: true, foreign_key: true
       t.string :provider, null: false
       t.string :uid, null: false
@@ -8,6 +8,6 @@ class CreateUserAuthentications < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    add_index :user_authentications, %i[provider uid], unique: true
+    add_index :identities, %i[provider uid], unique: true
   end
 end

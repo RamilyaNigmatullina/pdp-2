@@ -7,10 +7,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     authenticate
   end
 
-  def failure
-    redirect_to root_path
-  end
-
   private
 
   def authenticate

@@ -1,22 +1,10 @@
 require "rails_helper"
 
 feature "Sign In" do
+  include_context :stubbed_omniauth_data
+
   let(:user) { create :user }
   let(:unconfirmed_user) { create :user, :not_confirmed }
-  let(:facebook_auth_hash) do
-    build :authentication_hash, provider: "facebook", uid: "1234567", email: "user@example.com", name: "John Smith"
-  end
-  let(:google_auth_hash) do
-    build :authentication_hash, provider: "google_oauth2", uid: "1234567", email: "user@example.com", name: "John Smith"
-  end
-  let(:current_user) { User.last }
-
-  before do
-    OmniAuth.configure do |config|
-      config.mock_auth[:facebook] = facebook_auth_hash
-      config.mock_auth[:google_oauth2] = google_auth_hash
-    end
-  end
 
   def sign_in(email, password)
     visit new_user_session_path

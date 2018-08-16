@@ -15,7 +15,7 @@ describe Users::PrepareParams do
     }
   end
 
-  describe "#call" do
+  describe ".call" do
     it "prepares auth_data" do
       is_expected.to be_success
 
@@ -23,15 +23,14 @@ describe Users::PrepareParams do
     end
 
     context "when auth data is incorrect" do
-      let(:error_message) { "Your data is invalid. Please try again later." }
       let(:authentication_hash) do
-        build :authentication_hash, provider: "facebook", uid: "1234567", email: "", name: ""
+        build :authentication_hash, provider: "facebook", uid: "1234567", email: "", name: nil
       end
 
       it "provides error" do
         is_expected.to be_failure
 
-        expect(context.error).to eq(error_message)
+        expect(context.error).to eq("Email, Full Name should be present. Please try again.")
       end
     end
   end

@@ -5,13 +5,11 @@ describe Users::Authenticate do
     [
       Users::PrepareParams,
       Users::FindOrCreateUser,
-      Users::FindOrCreateUserAuthentication
+      Users::FindOrCreateIdentity
     ]
   end
 
-  describe "#organized" do
-    it "organizes other interactors" do
-      expect(described_class.organized).to eq(expected_interactors)
-    end
+  it "organizes other interactors" do
+    expect(described_class.organized).to eq(expected_interactors)
   end
 end

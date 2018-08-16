@@ -3,5 +3,5 @@ class Users::Authenticate
 
   organize Users::PrepareParams,
     Users::FindOrCreateUser,
-    Users::FindOrCreateUserAuthentication
+    Users::FindOrCreateIdentity
 end

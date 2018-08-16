@@ -1,23 +1,35 @@
 class Users::FindOrCreateUser
   include Interactor
 
-  TRANSLATE_SCOPE = %i[flash users authenticate].freeze
-
-  delegate :auth_data, to: :context
+  delegate :auth_data, :user, to: :context
 
   def call
     context.user = find_user || create_user
-  rescue
-    context.fail!(error: error_message)
+
+    context.fail!(error: error) if user.new_record?
+  end
+
+  def rollback
+    user.destroy if context.new_user
   end
 
   private
 
   def find_user
+    find_by_email || find_by_uid_and_provider
+  end
+
+  def find_by_email
     User.find_by(email: auth_data[:email])
   end
 
+  def find_by_uid_and_provider
+    Identity.find_by(provider: auth_data[:provider], uid: auth_data[:uid])&.user
+  end
+
   def create_user
+    context.new_user = true
+
     User.create(create_attributes)
   end
 
@@ -30,7 +42,7 @@ class Users::FindOrCreateUser
     }
   end
 
-  def error_message
-    I18n.t(:failure, scope: TRANSLATE_SCOPE, provider: auth_data[:provider])
+  def error
+    user.errors.full_messages.join(", ")
   end
 end

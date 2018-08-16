@@ -3,8 +3,7 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :trackable, :validatable,
     :omniauthable, omniauth_providers: %i[google_oauth2 facebook]
 
-
-  has_many :user_authentications
+  has_many :identities, dependent: :destroy
 
   validates :full_name, :role, presence: true
 
