@@ -90,7 +90,6 @@ group :development, :test do
 end
 
 group :development do
-  gem "capybara-webkit"
   gem "letter_opener"
   gem "rails-erd"
   gem "slim-rails"
