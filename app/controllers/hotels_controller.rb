@@ -36,7 +36,7 @@ class HotelsController < ApplicationController
   private
 
   def fetch_hotels
-    FilteredHotels.new(Hotel.all.page(params[:page]), filter_params).all
+    FilteredHotels.new(Hotel.all, filter_params).all.page(params[:page])
   end
 
   def authorize_resource

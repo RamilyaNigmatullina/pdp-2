@@ -7,15 +7,15 @@ module Geolocation
     end
   end
 
-   private
+  private
 
-   def from_cookies
-     return if cookies[:latitude].blank? || cookies[:longitude].blank?
+  def from_cookies
+    return if cookies[:latitude].blank? || cookies[:longitude].blank?
 
-     [cookies[:latitude], cookies[:longitude]]
-   end
+    [cookies[:latitude], cookies[:longitude]]
+  end
 
-   def from_request
-     request.location.data["loc"].split(",")
+  def from_request
+    [request.location.latitude, request.location.longitude]
   end
 end
