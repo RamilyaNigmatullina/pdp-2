@@ -7,6 +7,7 @@
 #= require jquery2
 #= require jquery-ujs
 #= require foundation
+#= require js-cookie
 #= require current_user
 #= require_tree ../templates
 #= require_tree .

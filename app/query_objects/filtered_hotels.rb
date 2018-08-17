@@ -1,6 +1,6 @@
 class FilteredHotels
   ALLOWED_PARAMS = %i[search stars min_rating max_rating near].freeze
-  DEFAULT_RADIUS = 100_000
+  DEFAULT_RADIUS = 40_000
 
   SEARCH_SQL = <<-SQL.freeze
     lower(hotels.name) similar to lower(:search) ESCAPE '^'

@@ -4,15 +4,12 @@ class Geolocation
       navigator.geolocation.getCurrentPosition saveGeolocation, deleteGeolocation
 
   saveGeolocation = (position) ->
-    setCookie("latitude", position.coords.latitude, 100)
-    setCookie("longitude", position.coords.longitude, 100)
+    Cookies.set("latitude", position.coords.longitude, { expires: 100, path: "/" })
+    Cookies.set("longitude", position.coords.longitude, { expires: 100, path: "/" })
 
   deleteGeolocation = ->
-    setCookie("latitude", "", 0)
-    setCookie("longitude", "", 0)
-
-  setCookie = (name, value, expires_msec) ->
-    document.cookie = name + "=" + value + ";expires=" + expires_msec
+    Cookies.remove("latitude", { path: "" })
+    Cookies.remove("longitude", { path: "" })
 
 geolocation = new Geolocation
 geolocation.getLocation()
