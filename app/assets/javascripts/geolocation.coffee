@@ -1,25 +1,18 @@
 class Geolocation
-  GEOLOCATION_PATH = "/geolocation.json"
-
   getLocation: ->
     if navigator.geolocation
       navigator.geolocation.getCurrentPosition saveGeolocation, deleteGeolocation
 
   saveGeolocation = (position) ->
-    $.ajax
-      url: GEOLOCATION_PATH
-      type: "PUT"
-      dataType: "json"
-      data:
-        geolocation:
-          latitude: position.coords.latitude
-          longitude: position.coords.longitude
+    setCookie("latitude", position.coords.latitude, 100)
+    setCookie("longitude", position.coords.longitude, 100)
 
   deleteGeolocation = ->
-    $.ajax
-      url: GEOLOCATION_PATH
-      type: "DELETE"
-      dataType: "json"
+    setCookie("latitude", "", 0)
+    setCookie("longitude", "", 0)
+
+  setCookie = (name, value, expires_msec) ->
+    document.cookie = name + "=" + value + ";expires=" + expires_msec
 
 geolocation = new Geolocation
 geolocation.getLocation()

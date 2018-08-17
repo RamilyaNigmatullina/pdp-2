@@ -1,6 +1,4 @@
 class Hotel < ApplicationRecord
-  geocoded_by latitude: :latitude, longitude: :longitude
-
   belongs_to :city
 
   validates :name, :address, :longitude, :latitude, :rating, :stars, :city_id, presence: true

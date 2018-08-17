@@ -1,8 +1,8 @@
 class HotelsController < ApplicationController
-  expose_decorated :hotels, :decorated_hotels
-  expose :hotel
-
   before_action :authorize_resource
+
+  expose_decorated :hotels, :fetch_hotels
+  expose_decorated :hotel
 
   helper_method :filter_params
 
@@ -30,21 +30,13 @@ class HotelsController < ApplicationController
   def destroy
     hotel.destroy
 
-    respond_with hotel, location: hotels_path
+    respond_with hotel
   end
 
   private
 
-  def decorated_hotels
-    HotelDecorator.decorate_collection(filtered_hotels)
-  end
-
-  def filtered_hotels
-    ::FilteredHotels.new(fetch_hotels, filter_params).all
-  end
-
   def fetch_hotels
-    Hotel.includes(:city).page(params[:page])
+    FilteredHotels.new(Hotel.all.page(params[:page]), filter_params).all
   end
 
   def authorize_resource
@@ -52,18 +44,17 @@ class HotelsController < ApplicationController
   end
 
   def filter_params
-    hotel_params.permit(:search, :stars, :min_rating, :max_rating).merge(near: near_params).to_h
+    params.fetch(:hotel, {}).permit(:search, :stars, :min_rating, :max_rating).merge(near: near_params).to_h
   end
 
   def near_params
     {
-      radius: hotel_params[:radius],
+      radius: params.dig(:hotel, :radius),
       coordinates: current_coordinates
     }
   end
 
   def hotel_params
-    params.fetch(:hotel, {}).permit(:name, :address, :longitude, :latitude, :rating, :radius,
-      :stars, :city_id, :search, :min_rating, :max_rating)
+    params.require(:hotel).permit(:name, :address, :longitude, :latitude, :rating, :stars, :city_id)
   end
 end
