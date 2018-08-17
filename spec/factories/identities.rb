@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :identity do
     provider "facebook"
-    uid { Faker::Number.number(7).to_s }
+    uid { SecureRandom.uuid.first(7) }
     user
   end
 end

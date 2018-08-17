@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :authentication_hash, class: OmniAuth::AuthHash do
-    uid "1234567"
+    uid { SecureRandom.uuid.first(7) }
     provider "facebook"
 
     transient do
