@@ -2,10 +2,6 @@ class FilteredHotels
   ALLOWED_PARAMS = %i[search stars min_rating max_rating near].freeze
   DEFAULT_RADIUS = 40_000
 
-  SEARCH_SQL = <<-SQL.freeze
-    lower(hotels.name) similar to lower(:search) ESCAPE '^'
-  SQL
-
   attr_reader :relation, :filter_params
   private :relation, :filter_params
 
@@ -25,7 +21,9 @@ class FilteredHotels
   private
 
   def by_search(relation, search)
-    relation.where(SEARCH_SQL, search: search)
+    result_ids = PgSearch.multisearch(search).map(&:searchable_id)
+
+    relation.where(id: result_ids)
   end
 
   def by_stars(relation, stars)

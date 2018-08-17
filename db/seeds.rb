@@ -1,8 +1,9 @@
 User.create(email: "user@example.com", password: "password")
 User.create(email: "admin@example.com", password: "password", role: "admin")
 
-city = City.create(name: "Kazan")
-city_2 = City.create(name: "Moscow")
+city = City.create(name: "Kazan", country: "Russian Federation")
+city_2 = City.create(name: "Moscow", country: "Russian Federation")
+city_3 = City.create(name: "New York", country: "USA")
 
 Hotel.create(city: city, name: "Hotel complex Tatarstan", address: "Pushkin str. 4, Kazan",
   longitude: 49.12240500000007, latitude: 55.786463, rating: 7.4, stars: 3)
@@ -22,3 +23,5 @@ Hotel.create(city: city, name: "Grand Hotel Kazan", address: "St. Petersburg str
   longitude: 49.124256100000025, latitude: 55.78646999999999, rating: 8.3, stars: 4)
 Hotel.create(city: city_2, name: "AZIMUT Hotel Olympic Moscow", address: "Olympic ave. 18/1, Moscow",
   longitude: 37.62303159999999, latitude: 55.7853487, rating: 9.2, stars: 4)
+Hotel.create(city: city_3, name: "Quality hotel & Suites at the falls", address: "240 First Street, Niagara Falls, NY",
+  longitude: -79.047150, latitude: 43.092461, rating: 9.2, stars: 4)
