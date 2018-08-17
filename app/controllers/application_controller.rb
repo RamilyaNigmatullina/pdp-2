@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def timezone
-    current_user&.timezone || geolocation_timezone
+    current_user&.timezone.presence || geolocation_timezone
   end
 
   def geolocation_timezone

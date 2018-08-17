@@ -1,5 +1,5 @@
 class HotelDecorator < ApplicationDecorator
-  delegate :id, :name, :address, :stars, :rating, :longitude, :latitude, :city_id
+  delegate :id, :name, :address, :stars, :rating, :longitude, :latitude, :city_id, :check_in_time
 
   def distance_humanize
     return "-" unless object.respond_to?(:distance)

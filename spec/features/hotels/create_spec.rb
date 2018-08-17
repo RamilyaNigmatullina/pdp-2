@@ -14,6 +14,7 @@ feature "Create Hotel" do
     fill_in "Latitude", with: "55.786463"
     fill_in "Rating", with: "7.4"
     fill_in "Stars", with: "3"
+    fill_in "Check in time", with: "22:00"
     select "Kazan", from: "City"
 
     click_on "Create Hotel"
@@ -24,6 +25,7 @@ feature "Create Hotel" do
     expect(page).to have_content("Address: Pushkin str. 4, Kazan")
     expect(page).to have_content("Stars: 3")
     expect(page).to have_content("Rating: 7.4")
+    expect(page).to have_content("Check-in time: 22:00")
     expect(page).to have_content("Distance: 3.3 km")
   end
 end
