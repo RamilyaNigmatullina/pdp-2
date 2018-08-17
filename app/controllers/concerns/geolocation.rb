@@ -10,12 +10,12 @@ module Geolocation
   private
 
   def from_cookies
-    return unless cookies[:geolocation]
+    return if cookies[:latitude].blank? || cookies[:longitude].blank?
 
-    cookies[:geolocation].split(",")
+    [cookies[:latitude], cookies[:longitude]]
   end
 
   def from_request
-    request.location.data["loc"].split(",")
+    [request.location.latitude, request.location.longitude]
   end
 end

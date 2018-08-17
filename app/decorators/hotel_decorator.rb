@@ -1,10 +1,10 @@
 class HotelDecorator < ApplicationDecorator
-  DISTANCE_TEXT = "%<distance>s km".freeze
+  delegate :id, :name, :address, :stars, :rating, :longitude, :latitude, :city_id
 
-  delegate :id, :name, :address, :stars, :rating
+  def distance_humanize
+    return "-" unless object.respond_to?(:distance)
 
-  def distance_text
-    format(DISTANCE_TEXT, distance: rounded_distance)
+    format(I18n.t(:distance, scope: "decorators.hotel"), distance: rounded_distance)
   end
 
   def formatted_check_in_time
@@ -16,6 +16,6 @@ class HotelDecorator < ApplicationDecorator
   private
 
   def rounded_distance
-    object.distance_to(context[:coordinates]).round(1)
+    object.distance.round(1)
   end
 end

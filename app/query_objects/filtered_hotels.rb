@@ -1,9 +1,9 @@
 class FilteredHotels
-  ALLOWED_PARAMS = %i[search stars min_rating max_rating radius].freeze
+  ALLOWED_PARAMS = %i[search stars min_rating max_rating near].freeze
+  DEFAULT_RADIUS = 40_000
 
   SEARCH_SQL = <<-SQL.freeze
-    lower(hotels.name) similar to lower(:search) ESCAPE '^' OR
-    lower(cities.name) similar to lower(:search) ESCAPE '^'
+    lower(hotels.name) similar to lower(:search) ESCAPE '^'
   SQL
 
   attr_reader :relation, :filter_params
@@ -25,7 +25,7 @@ class FilteredHotels
   private
 
   def by_search(relation, search)
-    relation.joins(:city).where(SEARCH_SQL, search: search)
+    relation.where(SEARCH_SQL, search: search)
   end
 
   def by_stars(relation, stars)
@@ -40,9 +40,9 @@ class FilteredHotels
     relation.where("hotels.rating <= ?", max_rating.to_f)
   end
 
-  def by_radius(relation, radius)
-    return relation unless filter_params[:coordinates].all?
+  def by_near(relation, near_params)
+    return relation unless near_params[:coordinates].all?
 
-    relation.near(filter_params[:coordinates], radius)
+    relation.near(near_params[:coordinates], near_params[:radius] || DEFAULT_RADIUS)
   end
 end

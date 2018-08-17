@@ -18,6 +18,7 @@ gem "uglifier", ">= 2.7.2"
 source "https://rails-assets.org" do
   gem "rails-assets-jquery-ujs"
   gem "rails-assets-jquery2"
+  gem "rails-assets-js-cookie"
 end
 
 # views

@@ -1,5 +1,5 @@
 class Hotel < ApplicationRecord
-  geocoded_by latitude: :latitude, longitude: :longitude
+  geocoded_by %i[latitude longitude]
 
   belongs_to :city
 
