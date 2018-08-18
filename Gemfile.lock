@@ -157,6 +157,7 @@ GEM
       sass (>= 3.3.0, < 3.5)
       sprockets-es6 (>= 0.9.0)
     foundation_emails (2.2.1.0)
+    geocoder (1.5.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     google-analytics-rails (1.1.1)
@@ -310,6 +311,7 @@ GEM
     rails-assets-jquery-ujs (1.2.2)
       rails-assets-jquery (> 1.8)
     rails-assets-jquery2 (2.0.0)
+    rails-assets-js-cookie (2.2.0)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -486,6 +488,7 @@ DEPENDENCIES
   formulaic
   foundation-icons-sass-rails
   foundation-rails
+  geocoder
   google-analytics-rails
   guard-rspec
   health_check
@@ -513,6 +516,7 @@ DEPENDENCIES
   rails (= 5.1.2)
   rails-assets-jquery-ujs!
   rails-assets-jquery2!
+  rails-assets-js-cookie!
   rails-erd
   responders
   rollbar

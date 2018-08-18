@@ -26,6 +26,6 @@ feature "Update Hotel" do
     expect(page).to have_content("Address: Pushkin str. 4, Kazan")
     expect(page).to have_content("Stars: 3")
     expect(page).to have_content("Rating: 7.4")
-    expect(page).to have_content("Distance: 3 км.")
+    expect(page).to have_content("Distance: 3.3 km")
   end
 end

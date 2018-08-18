@@ -6,3 +6,4 @@ en:
         stars: Stars Amount
         min_rating: Min Rating
         max_rating: Max Rating
+        radius: Radius, km.

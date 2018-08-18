@@ -1,0 +1,4 @@
+en:
+  decorators:
+    hotel:
+      distance: "%{distance} km"

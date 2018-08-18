@@ -13,10 +13,10 @@ class Users::PrepareParams
 
   def auth_data
     @auth_data ||= {
-      email: authentication_hash[:info][:email],
-      full_name: authentication_hash[:info][:name],
-      uid: authentication_hash[:uid],
-      provider: authentication_hash[:provider]
+      email: authentication_hash.dig(:info, :email),
+      full_name: authentication_hash.dig(:info, :name),
+      uid: authentication_hash.dig(:uid),
+      provider: authentication_hash.dig(:provider)
     }
   end
 

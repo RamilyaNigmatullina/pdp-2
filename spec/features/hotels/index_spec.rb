@@ -25,7 +25,7 @@ feature "List Articles" do
       expect(page).to have_content("Address: Pushkin str. 4, Kazan")
       expect(page).to have_content("Stars: 3")
       expect(page).to have_content("Rating: 7.4")
-      expect(page).to have_content("Distance: 3 км.")
+      expect(page).to have_content("Distance: 3.3 km")
     end
 
     within second_hotel_selector do
@@ -33,7 +33,7 @@ feature "List Articles" do
       expect(page).to have_content("Address: Profsoyuznaya str. 16B, Kazan")
       expect(page).to have_content("Stars: 3")
       expect(page).to have_content("Rating: 9.1")
-      expect(page).to have_content("Distance: 3 км.")
+      expect(page).to have_content("Distance: 4.0 km")
     end
   end
 
@@ -44,6 +44,7 @@ feature "List Articles" do
     fill_in "Min Rating", with: "7"
     fill_in "Max Rating", with: "8"
     fill_in "Stars Amount", with: "3"
+    fill_in "Radius, km.", with: "3.7"
 
     click_on "Find"
 
@@ -54,7 +55,7 @@ feature "List Articles" do
       expect(page).to have_content("Address: Pushkin str. 4, Kazan")
       expect(page).to have_content("Stars: 3")
       expect(page).to have_content("Rating: 7.4")
-      expect(page).to have_content("Distance: 3 км.")
+      expect(page).to have_content("Distance: 3.3 km")
     end
   end
 end
