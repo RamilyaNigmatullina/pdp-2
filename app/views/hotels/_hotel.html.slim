@@ -21,6 +21,11 @@
   => hotel.distance_humanize
   br
 
+  strong
+    ' Check-in time:
+  => hotel.formatted_check_in_time
+  br
+
   - if policy(hotel).manage?
     => link_to "Edit", edit_hotel_path(hotel)
     = link_to "Delete", hotel_path(hotel), method: :delete, data: { confirm: "Are you sure?" }
