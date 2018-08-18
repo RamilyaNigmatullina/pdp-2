@@ -6,22 +6,8 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
-  around_action :timezone=
+  include TimezoneSetter
 
   responders :flash
   respond_to :html
-
-  private
-
-  def timezone=(&block)
-    Time.use_zone(timezone, &block)
-  end
-
-  def timezone
-    current_user&.timezone.presence || geolocation_timezone
-  end
-
-  def geolocation_timezone
-    Timezone.lookup(*current_coordinates).name
-  end
 end
