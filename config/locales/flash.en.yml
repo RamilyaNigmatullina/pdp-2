@@ -1,4 +1,8 @@
 en:
+  devise:
+    omniauth_callbacks:
+      user:
+        signed_in: "Signed in successfully."
   flash:
     devise:
       passwords:
