@@ -58,6 +58,6 @@ end
 
 class ActionDispatch::Request
   def location
-    Geocoder.search("176.59.116.134").first
+    Geocoder.search("91.107.102.152").first
   end
 end

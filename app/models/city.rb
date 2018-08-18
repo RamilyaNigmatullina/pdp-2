@@ -3,7 +3,7 @@ class City < ApplicationRecord
 
   multisearchable against: %i[name country]
 
-  has_many :hotels
+  has_many :hotels, dependent: :destroy
 
   validates :name, presence: true
 
