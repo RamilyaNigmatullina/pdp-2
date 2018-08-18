@@ -42,7 +42,7 @@ describe Users::FindOrCreateUser do
     context "when user changed his email" do
       let(:user) { create :user, email: "new_email@example.com" }
 
-      before { create :identity, user: user, provider: "facebook", uid: "1234567" }
+      before { create :identity, :facebook, user: user, uid: "1234567" }
 
       it { is_expected.to be_success }
 

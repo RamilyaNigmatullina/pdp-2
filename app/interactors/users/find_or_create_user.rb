@@ -6,7 +6,7 @@ class Users::FindOrCreateUser
   def call
     context.user = find_user || create_user
 
-    context.fail!(error: error) if user.new_record?
+    context.fail!(error: error) if user.invalid?
   end
 
   def rollback

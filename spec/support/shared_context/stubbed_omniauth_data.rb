@@ -5,7 +5,6 @@ shared_context :stubbed_omniauth_data do
   let(:google_auth_hash) do
     build :authentication_hash, provider: "google_oauth2", uid: "1234567", email: "user@example.com", name: "John Smith"
   end
-  let(:current_user) { User.last }
 
   before do
     OmniAuth.configure do |config|

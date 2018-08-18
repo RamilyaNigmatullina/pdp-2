@@ -11,6 +11,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def authenticate
     if authenticate_user.success?
+      set_flash_message! :notice, :signed_in
       sign_in_and_redirect authenticate_user.user, event: :authentication
     else
       redirect_to root_path, alert: authenticate_user.error

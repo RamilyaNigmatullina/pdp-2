@@ -28,7 +28,7 @@ describe Users::FindOrCreateIdentity do
     end
 
     context "when user has identity" do
-      before { create :identity, user: user, provider: "facebook", uid: "1234567" }
+      before { create :identity, :facebook, user: user, uid: "1234567" }
 
       it { is_expected.to be_success }
 
@@ -38,7 +38,7 @@ describe Users::FindOrCreateIdentity do
     end
 
     context "when user has identity for another provider" do
-      before { create :identity, user: user, provider: "google_oauth2" }
+      before { create :identity, :google, user: user }
 
       it { is_expected.to be_success }
 

@@ -3,6 +3,7 @@ require "rails_helper"
 feature "Sign In" do
   include_context :stubbed_omniauth_data
 
+  let(:current_user) { User.last }
   let(:user) { create :user }
   let(:unconfirmed_user) { create :user, :not_confirmed }
 
@@ -37,7 +38,7 @@ feature "Sign In" do
 
     click_on "Sign in with Facebook"
 
-    expect(page).to have_content("Sign out")
+    expect(page).to have_content("Signed in successfully.")
 
     visit edit_user_registration_path(current_user)
 
@@ -50,7 +51,7 @@ feature "Sign In" do
 
     click_on "Sign in with Google"
 
-    expect(page).to have_content("Sign out")
+    expect(page).to have_content("Signed in successfully.")
 
     visit edit_user_registration_path(current_user)
 

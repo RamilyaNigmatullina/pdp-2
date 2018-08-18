@@ -7,7 +7,7 @@ class Users::FindOrCreateIdentity
   def call
     context.identity = find_or_create_identity
 
-    context.fail!(error: error) if identity.new_record?
+    context.fail!(error: error) if identity.invalid?
   end
 
   private
