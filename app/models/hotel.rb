@@ -11,12 +11,4 @@ class Hotel < ApplicationRecord
   validates :name, uniqueness: { scope: :city_id }
   validates :rating, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 10 }
   validates :stars, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
-
-  after_save :reindex
-
-  private
-
-  def reindex
-    PgSearch::Multisearch.rebuild(City)
-  end
 end
