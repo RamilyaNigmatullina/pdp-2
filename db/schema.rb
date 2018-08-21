@@ -81,5 +81,4 @@ ActiveRecord::Schema.define(version: 20180821171136) do
 
   add_foreign_key "hotels", "cities"
   add_foreign_key "identities", "users"
-  add_foreign_key "rooms", "hotels"
 end
