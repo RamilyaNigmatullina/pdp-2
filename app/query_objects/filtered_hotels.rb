@@ -21,9 +21,16 @@ class FilteredHotels
   private
 
   def by_search(relation, search)
-    result_ids = PgSearch.multisearch(search).map(&:searchable_id)
+    hotel_ids = pg_search_results(search, "Hotel")
+    city_ids = pg_search_results(search, "City")
 
-    relation.where(id: result_ids)
+    relation.where(id: hotel_ids).or(relation.where(city_id: city_ids))
+  end
+
+  def pg_search_results(search, searchable_type)
+    @pg_search_result ||= PgSearch.multisearch(search)
+
+    @pg_search_result.where(searchable_type: searchable_type).map(&:searchable_id)
   end
 
   def by_stars(relation, stars)
