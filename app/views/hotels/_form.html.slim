@@ -1,4 +1,4 @@
-= simple_form_for hotel  do |f|
+= simple_form_for hotel, html: { class: "hotel-form" }  do |f|
   = f.input :name
   = f.input :address
   = f.input :longitude, input_html: { type: "number" }
