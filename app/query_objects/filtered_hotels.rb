@@ -43,6 +43,6 @@ class FilteredHotels
   def by_near(relation, near_params)
     return relation unless near_params[:coordinates].all?
 
-    relation.near(near_params[:coordinates], near_params[:radius] || DEFAULT_RADIUS)
+    relation.near(near_params[:coordinates], near_params[:radius].presence || DEFAULT_RADIUS)
   end
 end
