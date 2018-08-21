@@ -1,4 +1,4 @@
-module ReindexMultisearch
+module ReindexMultisearchTable
   extend ActiveSupport::Concern
 
   included do
@@ -8,6 +8,6 @@ module ReindexMultisearch
   private
 
   def reindex
-    PgSearch::Multisearch.rebuild(self.name)
+    PgSearch::Multisearch.rebuild(self.class.name.constantize)
   end
 end
