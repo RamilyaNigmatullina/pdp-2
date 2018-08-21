@@ -1,5 +1,6 @@
 class Hotel < ApplicationRecord
   include PgSearch
+  include ReindexMultisearchTable
 
   multisearchable against: %i[name address]
 
