@@ -1,4 +1,9 @@
 class Hotel < ApplicationRecord
+  include PgSearch
+  include ReindexMultisearchTable
+
+  multisearchable against: %i[name address]
+
   geocoded_by %i[latitude longitude]
 
   belongs_to :city
