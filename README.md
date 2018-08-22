@@ -2,7 +2,7 @@
 
 It's an simple app based on Rails 5 and Ruby 2.4.2.
 
-It the website for searching hotels.
+It's the website for searching hotels.
 
 There is the following functionality is present on this website:
 * There is the ability to sign in with Google

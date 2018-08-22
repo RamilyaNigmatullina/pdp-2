@@ -19,7 +19,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def authenticate_user
-    @authenticate_user ||= Users::Authenticate.call(authentication_hash: authentication_hash)
+    @authenticate_user ||= Authenticate.call(authentication_hash: authentication_hash)
   end
 
   def authentication_hash

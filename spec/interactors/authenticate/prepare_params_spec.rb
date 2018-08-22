@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe Users::PrepareParams do
+describe Authenticate::PrepareParams do
   subject(:context) { described_class.call(authentication_hash: authentication_hash) }
 
   let(:authentication_hash) do

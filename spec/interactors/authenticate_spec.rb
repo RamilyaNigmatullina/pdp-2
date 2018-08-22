@@ -1,11 +1,11 @@
 require "rails_helper"
 
-describe Users::Authenticate do
+describe Authenticate do
   let(:expected_interactors) do
     [
-      Users::PrepareParams,
-      Users::FindOrCreateUser,
-      Users::FindOrCreateIdentity
+      Authenticate::PrepareParams,
+      Authenticate::FindOrCreateUser,
+      Authenticate::FindOrCreateIdentity
     ]
   end
 
