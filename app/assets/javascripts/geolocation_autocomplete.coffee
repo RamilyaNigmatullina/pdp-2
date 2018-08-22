@@ -18,7 +18,7 @@ class GeolocationAutocomplete
         address:
           @$addressInput.val()
       success: (response) =>
-        @$longitudeInput.val(response.longitude)
         @$latitudeInput.val(response.latitude)
+        @$longitudeInput.val(response.longitude)
 
 new GeolocationAutocomplete(el) for el in $(".hotel-form")

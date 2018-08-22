@@ -1,4 +1,4 @@
-class Users::FindOrCreateIdentity
+class Authenticate::FindOrCreateIdentity
   include Interactor
 
   delegate :auth_data, :user, :identity, to: :context

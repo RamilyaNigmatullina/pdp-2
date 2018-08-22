@@ -1,4 +1,4 @@
-class Users::FindOrCreateUser
+class Authenticate::FindOrCreateUser
   include Interactor
 
   delegate :auth_data, :user, to: :context
@@ -38,7 +38,7 @@ class Users::FindOrCreateUser
       email: auth_data[:email],
       full_name: auth_data[:full_name],
       password: Devise.friendly_token[0, 20],
-      confirmed_at: Time.zone.now
+      confirmed_at: Time.current
     }
   end
 

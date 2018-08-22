@@ -1,4 +1,4 @@
-class Users::PrepareParams
+class Authenticate::PrepareParams
   include Interactor
 
   delegate :authentication_hash, to: :context

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe Users::FindOrCreateUser do
+describe Authenticate::FindOrCreateUser do
   subject(:context) { described_class.call(auth_data: auth_data) }
 
   let(:auth_data) do
