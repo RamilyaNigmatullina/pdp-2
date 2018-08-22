@@ -4,13 +4,13 @@ It's an simple app based on Rails 5 and Ruby 2.4.2.
 
 It the website for searching hotels.
 
-There are the following functionality present on this website:
-* Sign in with Google
-* Sign in with Facebook
-* You can choose timezone on the settings page. If you will not choose timezone, it will be set based on your IP address.
-* You can allow the browser to use your geolocation. If not, your geolocation will be determined based on your IP address.
-* Complex search by several related models for several fields. You can search hotels by name, address, city and country. Also you can filter hotels by stars amount, rating and radius. If you allow browser to use your geolocation, the search by radius will be more accurate.
-* As admin user you can create hotels
+There is the following functionality is present on this website:
+* There is the ability to sign in with Google
+* There is the ability to sign in with Facebook
+* There is the ability to choose a timezone on the settings page. If you will not choose a timezone, it will be based on your IP address.
+* There is the ability to allow the browser to use your geolocation. If you will not allow the browser to  use your geolocation, geolocation will be determined based on your IP address.
+* Complex search by several related models for several fields. You can search hotels by name, address, city and country. Also you can filter hotels by stars amount, rating and radius. If you allow to use your geolocation, the search by radius will be more accurate.
+* There is the ability to create hotels if you signed in as admin user
 
 ## Scripts
 
