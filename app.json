@@ -10,6 +10,12 @@
     "RACK_ENV": { "required": true },
     "RAILS_ENV": { "required": true },
     "RAILS_SERVE_STATIC_FILES": { "required": true },
+    "FACEBOOK_CLIENT_ID": { "required": true },
+    "FACEBOOK_CLIENT_SECRET": { "required": true },
+    "GEOCODES_ACC_USERNAME": { "required": true },
+    "GOOGLE_API_KEY": { "required": true },
+    "GOOGLE_CLIENT_ID": { "required": true },
+    "GOOGLE_CLIENT_SECRET": { "required": true },
     "SECRET_KEY_BASE": { "generator": "secret" }
   },
   "addons": [
