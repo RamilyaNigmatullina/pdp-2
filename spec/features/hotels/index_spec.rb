@@ -25,7 +25,7 @@ feature "List Articles" do
       expect(page).to have_content("Address: Pushkin str. 4, Kazan")
       expect(page).to have_content("Stars: 3")
       expect(page).to have_content("Rating: 7.4")
-      # expect(page).to have_content("Check-in time: 17:00")
+      expect(page).to have_content("Check-in time: 17:00")
       expect(page).to have_content("Distance: 3.3 km")
     end
 
@@ -34,7 +34,7 @@ feature "List Articles" do
       expect(page).to have_content("Address: Profsoyuznaya str. 16B, Kazan")
       expect(page).to have_content("Stars: 3")
       expect(page).to have_content("Rating: 9.1")
-      # expect(page).to have_content("Check-in time: 17:00")
+      expect(page).to have_content("Check-in time: 17:00")
       expect(page).to have_content("Distance: 4.0 km")
     end
   end
