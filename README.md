@@ -1,8 +1,16 @@
 # Ramilya's PDP-2
 
-[![Build Status](https://semaphoreci.com/api/v1/ramilyanigmatullina/pdp-2/branches/google-omniauth-159385490/badge.svg)](https://semaphoreci.com/ramilyanigmatullina/pdp-2)
-
 It's an simple app based on Rails 5 and Ruby 2.4.2.
+
+It the website for searching hotels.
+
+There are the following functionality present on this website:
+* Sign in with Google
+* Sign in with Facebook
+* You can choose timezone on the settings page. If you will not choose timezone, it will be set based on your IP address.
+* You can allow the browser to use your geolocation. If not, your geolocation will be determined based on your IP address.
+* Complex search by several related models for several fields. You can search hotels by name, address, city and country. Also you can filter hotels by stars amount, rating and radius. If you allow browser to use your geolocation, the search by radius will be more accurate.
+* As admin user you can create hotels
 
 ## Scripts
 
@@ -45,7 +53,8 @@ bin/server
 
 ## Test users
 
-  - User: "user@example.com / 123456"
+  - User: "user@example.com / password"
+  - Admin: "admin@example.com / password"
 
 ## Mailers
 
