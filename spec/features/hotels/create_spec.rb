@@ -2,6 +2,7 @@ require "rails_helper"
 
 feature "Create Hotel" do
   include_context :user_signed_in_as_admin
+  include_context :stubbed_geolocation
 
   before { create :city, name: "Kazan" }
 
@@ -26,6 +27,6 @@ feature "Create Hotel" do
     expect(page).to have_content("Stars: 3")
     expect(page).to have_content("Rating: 7.4")
     expect(page).to have_content("Check-in time: 22:00")
-    expect(page).to have_content("Distance: 3.3 km")
+    expect(page).to have_content("Distance: 0.2 km")
   end
 end

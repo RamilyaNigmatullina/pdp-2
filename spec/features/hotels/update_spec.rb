@@ -2,6 +2,7 @@ require "rails_helper"
 
 feature "Update Hotel" do
   include_context :user_signed_in_as_admin
+  include_context :stubbed_geolocation
 
   let(:hotel) do
     create :hotel, name: "Hotel Nogai", address: "Profsoyuznaya str. 16B, Kazan",
@@ -28,6 +29,6 @@ feature "Update Hotel" do
     expect(page).to have_content("Stars: 3")
     expect(page).to have_content("Rating: 7.4")
     expect(page).to have_content("Check-in time: 22:00")
-    expect(page).to have_content("Distance: 3.3 km")
+    expect(page).to have_content("Distance: 0.2 km")
   end
 end
