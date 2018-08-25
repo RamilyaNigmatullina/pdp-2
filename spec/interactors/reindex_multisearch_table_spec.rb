@@ -29,7 +29,7 @@ describe ReindexMultisearchTable do
     context "when searchable searchable_attributes were not changes" do
       before { hotel.update(latitude: 44.6437643) }
 
-      it "rebuilds multisearch table" do
+      it "doesn't rebuild multisearch table" do
         expect(PgSearch::Multisearch).not_to receive(:rebuild)
 
         context
