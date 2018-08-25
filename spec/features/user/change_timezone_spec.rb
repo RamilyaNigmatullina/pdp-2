@@ -7,13 +7,13 @@ feature "Change Timezone" do
   scenario "User changes his timezone" do
     visit root_path
 
-    expect(page).to have_content("Current Time 14:00")
+    expect(page).to have_content("Current time: 14:00 (Moscow)")
 
     visit edit_user_registration_path(current_user)
 
     select "Paris", from: "Timezone"
     click_on "Update"
 
-    expect(page).to have_content("Current Time 13:00")
+    expect(page).to have_content("Current time: 13:00 (Paris)")
   end
 end
