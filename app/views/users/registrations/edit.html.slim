@@ -17,7 +17,7 @@
             required: false
         = f.input :password_confirmation,
             required: false
-        = f.input :timezone, collection: ActiveSupport::TimeZone.all.map(&:name).sort
+        = f.input :timezone, collection: timezones_list
 
       .form-actions
         = f.button :submit, "Update"
