@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Cancel Account" do
-  include_context "current user signed in"
+  include_context :user_signed_in
 
   background do
     visit edit_user_registration_path(current_user)

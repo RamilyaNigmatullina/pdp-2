@@ -4,7 +4,7 @@ describe Authenticate::PrepareParams do
   subject(:context) { described_class.call(authentication_hash: authentication_hash) }
 
   let(:authentication_hash) do
-    build :authentication_hash, provider: "facebook", uid: "1234567", email: "user@example.com", name: "John Smith"
+    build :omniauth, :facebook, uid: "1234567", email: "user@example.com", name: "John Smith"
   end
   let(:expected_auth_data) do
     {
@@ -24,7 +24,7 @@ describe Authenticate::PrepareParams do
 
     context "when auth data is incorrect" do
       let(:authentication_hash) do
-        build :authentication_hash, provider: "facebook", uid: "1234567", email: "", name: nil
+        build :omniauth, :facebook, provider: "facebook", uid: "1234567", email: "", name: nil
       end
 
       it "provides error" do

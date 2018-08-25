@@ -1,8 +1,6 @@
 require "rails_helper"
 
 feature "Sign In" do
-  include_context :stubbed_omniauth_data
-
   let(:current_user) { User.last }
   let(:user) { create :user }
   let(:unconfirmed_user) { create :user, :not_confirmed }
@@ -31,31 +29,5 @@ feature "Sign In" do
     sign_in(unconfirmed_user.email, user.password)
 
     expect(page).to have_content("You have to confirm your email address before continuing.")
-  end
-
-  scenario "User signs in with Facebook" do
-    visit root_path
-
-    click_on "Sign in with Facebook"
-
-    expect(page).to have_content("Signed in successfully.")
-
-    visit edit_user_registration_path(current_user)
-
-    expect(page).to have_field("Full name", with: "John Smith")
-    expect(page).to have_field("Email", with: "user@example.com")
-  end
-
-  scenario "User signs in with Google" do
-    visit root_path
-
-    click_on "Sign in with Google"
-
-    expect(page).to have_content("Signed in successfully.")
-
-    visit edit_user_registration_path(current_user)
-
-    expect(page).to have_field("Full name", with: "John Smith")
-    expect(page).to have_field("Email", with: "user@example.com")
   end
 end

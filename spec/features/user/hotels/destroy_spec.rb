@@ -3,9 +3,11 @@ require "rails_helper"
 feature "Destroy Hotel" do
   include_context :user_signed_in_as_admin
 
-  before { create :hotel, name: "Hotel complex Tatarstan" }
+  background do
+    create :hotel, name: "Hotel complex Tatarstan"
+  end
 
-  scenario "User destroys hotel" do
+  scenario "Admin destroys hotel" do
     visit hotels_path
 
     click_on "Delete"
