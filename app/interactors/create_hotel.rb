@@ -1,6 +1,6 @@
 class CreateHotel
   include Interactor::Organizer
 
-  organize Hotels::Create,
+  organize Hotels::Save,
     ReindexMultisearchTable
 end

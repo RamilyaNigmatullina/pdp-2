@@ -1,4 +1,4 @@
-class Hotels::Create
+class Hotels::Save
   include Interactor
 
   delegate :record, to: :context
