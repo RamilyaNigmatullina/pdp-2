@@ -1,9 +1,9 @@
 class Hotel < ApplicationRecord
   include PgSearch
 
-  SEARCH_ATTRIBUTES = %i[name address].freeze
+  SEARCHABLE_ATTRIBUTES = %i[name address].freeze
 
-  multisearchable against: SEARCH_ATTRIBUTES
+  multisearchable against: SEARCHABLE_ATTRIBUTES
 
   geocoded_by %i[latitude longitude]
 

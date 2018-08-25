@@ -4,7 +4,7 @@ class ReindexMultisearchTable
   delegate :record, to: :context
 
   def call
-    reindex_multisearch_table if search_attributes_changed? || record_deleted?
+    reindex_multisearch_table if searchable_attributes_changed? || record_deleted?
   end
 
   private
@@ -13,15 +13,15 @@ class ReindexMultisearchTable
     PgSearch::Multisearch.rebuild(record.class)
   end
 
-  def search_attributes_changed?
-    record.previous_changes.slice(*search_attributes).any?
+  def searchable_attributes_changed?
+    record.previous_changes.slice(*searchable_attributes).any?
   end
 
   def record_deleted?
     !record.class.exists?(record.id)
   end
 
-  def search_attributes
-    record.class::SEARCH_ATTRIBUTES
+  def searchable_attributes
+    record.class::SEARCHABLE_ATTRIBUTES
   end
 end

@@ -18,7 +18,7 @@ describe Hotels::Save do
       it { is_expected.to be_failure }
 
       it "doesn't save hotel" do
-        expect { context }.not_to change { Hotel.count }
+        expect { context }.not_to(change { Hotel.count })
       end
     end
   end
