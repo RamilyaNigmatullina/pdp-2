@@ -6,4 +6,8 @@ module TimeHelper
   def timezone
     Time.zone.name
   end
+
+  def timezones_list
+    ActiveSupport::TimeZone.all.map(&:name).sort
+  end
 end
