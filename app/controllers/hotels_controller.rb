@@ -56,9 +56,7 @@ class HotelsController < ApplicationController
   end
 
   def search_form_params
-    params
-      .fetch(:search_form, {})
-      .permit(:search, :stars, :min_rating, :max_rating, :radius)
+    params.fetch(:search_form, {}).permit(:search, :stars, :min_rating, :max_rating, :radius)
   end
 
   def hotel_params
