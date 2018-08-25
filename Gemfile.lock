@@ -441,6 +441,7 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.6)
+    timecop (0.9.1)
     timezone (1.2.12)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
@@ -543,6 +544,7 @@ DEPENDENCIES
   spring-watcher-listen
   stackprof
   terminal-notifier-guard
+  timecop
   timezone
   uglifier (>= 2.7.2)
   web-console

@@ -1,7 +1,6 @@
 FactoryGirl.define do
-  factory :authentication_hash, class: OmniAuth::AuthHash do
+  factory :omniauth, class: OmniAuth::AuthHash do
     uid { SecureRandom.uuid.first(7) }
-    provider "facebook"
 
     transient do
       email { Faker::Internet.email }
@@ -13,6 +12,14 @@ FactoryGirl.define do
         email: email,
         name: name
       }
+    end
+
+    trait :facebook do
+      provider "facebook"
+    end
+
+    trait :google do
+      provider "google_oauth2"
     end
   end
 end

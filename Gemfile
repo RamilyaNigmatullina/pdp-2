@@ -90,6 +90,7 @@ group :development, :test do
   gem "rubocop-rspec", require: false
   gem "scss_lint", require: false
   gem "slim_lint", require: false
+  gem "timecop"
 end
 
 group :development do
