@@ -1,16 +1,7 @@
-= simple_form_for :hotel, method: :get, url: hotels_path, html: { class: "search-form"} do |f|
-  = f.input :search, label: false, input_html: { value: filter_params[:search], class: "search-field" }
-
-  = f.input :stars, as: :integer, label: false,
-      input_html: { value: filter_params[:stars], min: 1, max: 5, class: "filter-field" }
-
-  = f.input :min_rating, as: :integer, label: false,
-      input_html: { value: filter_params[:min_rating], min: 0, max: 10, class: "filter-field" }
-
-  = f.input :max_rating, as: :integer, label: false,
-      input_html: { value: filter_params[:max_rating], min: 0, max: 10, class: "filter-field" }
-
-  = f.input :radius, as: :integer, label: false,
-      input_html: { value: filter_params.dig(:near, :radius), min: 0, class: "filter-field" }
-
+= simple_form_for search_form, method: :get, url: hotels_path, html: { class: "search-form"} do |f|
+  = f.input :search, label: false, input_html: { class: "search-field" }
+  = f.input :stars, as: :integer, label: false, input_html: { min: 1, max: 5, class: "filter-field" }
+  = f.input :min_rating, as: :integer, label: false, input_html: { min: 0, max: 10, class: "filter-field" }
+  = f.input :max_rating, as: :integer, label: false, input_html: { min: 0, max: 10, class: "filter-field" }
+  = f.input :radius, as: :integer, label: false, input_html: { min: 0, class: "filter-field" }
   = f.submit "Find", class: "button"

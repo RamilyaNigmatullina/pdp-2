@@ -1,7 +1,7 @@
 en:
   simple_form:
     placeholders:
-      hotel:
+      search_form:
         search: Search
         stars: Stars Amount
         min_rating: Min Rating

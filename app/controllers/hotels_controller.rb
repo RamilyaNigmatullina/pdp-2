@@ -3,6 +3,7 @@ class HotelsController < ApplicationController
 
   expose_decorated :hotels, :fetch_hotels
   expose_decorated :hotel
+  expose :search_form, -> { SearchForm.new(search_form_params) }
 
   helper_method :filter_params
 
@@ -44,7 +45,7 @@ class HotelsController < ApplicationController
   end
 
   def filter_params
-    params.fetch(:hotel, {}).permit(:search, :stars, :min_rating, :max_rating).merge(near: near_params).to_h
+    search_form_params.merge(near: near_params).to_h
   end
 
   def near_params
@@ -52,6 +53,12 @@ class HotelsController < ApplicationController
       radius: params.dig(:hotel, :radius),
       coordinates: current_coordinates
     }
+  end
+
+  def search_form_params
+    params
+      .fetch(:search_form, {})
+      .permit(:search, :stars, :min_rating, :max_rating, :radius)
   end
 
   def hotel_params
