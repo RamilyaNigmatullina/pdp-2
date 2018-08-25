@@ -14,7 +14,7 @@ class HotelsController < ApplicationController
   end
 
   def create
-    hotel.save
+    self.hotel = CreateHotel.call(record: hotel).record
 
     respond_with hotel, location: hotels_path
   end
@@ -23,13 +23,13 @@ class HotelsController < ApplicationController
   end
 
   def update
-    hotel.update(hotel_params)
+    self.hotel = UpdateHotel.call(record: hotel, record_params: hotel_params).record
 
     respond_with hotel, location: hotels_path
   end
 
   def destroy
-    hotel.destroy
+    self.hotel = DestroyHotel.call(record: hotel).record
 
     respond_with hotel
   end

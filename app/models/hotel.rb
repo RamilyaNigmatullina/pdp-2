@@ -1,8 +1,9 @@
 class Hotel < ApplicationRecord
   include PgSearch
-  include ReindexMultisearchTable
 
-  multisearchable against: %i[name address]
+  SEARCH_ATTRIBUTES = %i[name address].freeze
+
+  multisearchable against: SEARCH_ATTRIBUTES
 
   geocoded_by %i[latitude longitude]
 
