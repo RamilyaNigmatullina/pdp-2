@@ -1,2 +1,1 @@
-=> t(".current_time")
-= I18n.l(Time.current, format: :time)
+=> t(:current_time, scope: "hotels.index", time: current_time, timezone: timezone)
