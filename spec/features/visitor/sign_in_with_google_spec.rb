@@ -1,12 +1,12 @@
 require "rails_helper"
 
 feature "Sign In with Google" do
+  include_context :stubbed_google_omniauth_data, email: "user@example.com", uid: "1234567"
+
   let(:user) { create :user, email: "user@example.com" }
 
   background do
     create :identity, :facebook, user: user, uid: "1234567"
-
-    OmniAuth.config.mock_auth[:google_oauth2] = build :omniauth, :google, email: "user@example.com", uid: "1234567"
   end
 
   scenario "Visitor signs in with Google" do

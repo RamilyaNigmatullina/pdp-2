@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "List Articles" do
+feature "Search Hotels" do
   include_context :stubbed_geolocation
 
   background do

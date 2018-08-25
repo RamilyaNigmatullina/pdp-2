@@ -1,9 +1,7 @@
 require "rails_helper"
 
 feature "Sign Up with Facebook" do
-  background do
-    OmniAuth.config.mock_auth[:facebook] = build :omniauth, :facebook
-  end
+  include_context :stubbed_facebook_omniauth_data
 
   scenario "Visitor signs up with Facebook" do
     visit root_path

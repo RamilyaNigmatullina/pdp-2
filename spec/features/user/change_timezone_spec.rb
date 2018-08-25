@@ -14,8 +14,6 @@ feature "Change Timezone" do
     select "Paris", from: "Timezone"
     click_on "Update"
 
-    visit root_path
-
     expect(page).to have_content("Current Time 13:00")
   end
 end

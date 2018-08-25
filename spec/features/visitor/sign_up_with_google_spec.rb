@@ -1,9 +1,7 @@
 require "rails_helper"
 
 feature "Sign Up with Google" do
-  background do
-    OmniAuth.config.mock_auth[:google_oauth2] = build :omniauth, :google
-  end
+  include_context :stubbed_google_omniauth_data
 
   scenario "Visitor signs up with Google" do
     visit root_path

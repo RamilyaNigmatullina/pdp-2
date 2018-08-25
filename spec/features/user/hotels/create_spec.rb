@@ -23,7 +23,7 @@ feature "Create Hotel" do
   scenario "Admin creates hotel" do
     visit new_hotel_path
 
-    fill_form(:hote, hotel_attributes)
+    fill_form(:hotel, hotel_attributes)
     select "Kazan", from: "City"
 
     click_on "Create Hotel"

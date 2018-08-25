@@ -28,7 +28,7 @@ feature "Update Hotel" do
   scenario "Admin updates hotel" do
     visit edit_hotel_path(hotel)
 
-    fill_form(:hote, hotel_attributes)
+    fill_form(:hotel, hotel_attributes)
 
     click_on "Update Hotel"
 
