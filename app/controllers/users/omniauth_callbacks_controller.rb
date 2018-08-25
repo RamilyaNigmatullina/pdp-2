@@ -19,10 +19,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def authenticate_user
-    @authenticate_user ||= Authenticate.call(authentication_hash: authentication_hash)
+    @authenticate_user ||= Authenticate.call(auth_data: auth_data)
   end
 
-  def authentication_hash
+  def auth_data
     request.env["omniauth.auth"]
   end
 end

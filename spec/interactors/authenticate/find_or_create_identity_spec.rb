@@ -1,15 +1,11 @@
 require "rails_helper"
 
 describe Authenticate::FindOrCreateIdentity do
-  subject(:context) { described_class.call(auth_data: auth_data, user: user) }
+  subject(:context) { described_class.call(decorated_auth_data: decorated_auth_data, user: user) }
 
+  let(:decorated_auth_data) { AuthDataDecorator.new(auth_data) }
+  let(:auth_data) { build :omniauth, :facebook, uid: "1234567" }
   let(:user) { create :user }
-  let(:auth_data) do
-    {
-      provider: "facebook",
-      uid: "1234567"
-    }
-  end
   let(:expected_attributes) do
     {
       provider: "facebook",

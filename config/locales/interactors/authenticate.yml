@@ -1,5 +1,0 @@
-en:
-  interactors:
-    users:
-      authenticate:
-        invalid_data: "%{fields} should be present. Please try again."
