@@ -1,4 +1,4 @@
-module ReindexMultisearchTable
+module ReindexMultisearch
   extend ActiveSupport::Concern
 
   included do

@@ -9,6 +9,7 @@ GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
   specs:
+    action_policy (0.2.3)
     actioncable (5.1.2)
       actionpack (= 5.1.2)
       nio4r (~> 2.0)
@@ -291,8 +292,6 @@ GEM
       pry (>= 0.9.10)
     public_suffix (2.0.5)
     puma (3.9.1)
-    pundit (1.1.0)
-      activesupport (>= 3.0.0)
     rack (2.0.5)
     rack-canonical-host (0.2.2)
       addressable (> 0, < 3)
@@ -470,6 +469,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  action_policy
   active_link_to
   autoprefixer-rails
   awesome_print
@@ -517,7 +517,6 @@ DEPENDENCIES
   premailer-rails
   pry-rails
   puma
-  pundit
   rack-canonical-host
   rack-mini-profiler!
   rails (= 5.1.2)

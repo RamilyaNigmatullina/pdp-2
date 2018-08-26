@@ -1,20 +1,16 @@
 require "rails_helper"
 
 describe Authenticate::FindOrCreateUser do
-  subject(:context) { described_class.call(auth_data: auth_data) }
+  subject(:context) { described_class.call(decorated_auth_data: decorated_auth_data) }
 
+  let(:decorated_auth_data) { AuthDataDecorator.new(auth_data) }
   let(:auth_data) do
-    {
-      provider: "facebook",
-      uid: "1234567",
-      email: "user@example.com",
-      full_name: "Joe Bloggs"
-    }
+    build :omniauth, :facebook, uid: "1234567", email: "user@example.com", name: "John Smith"
   end
   let(:expected_attributes) do
     {
       email: "user@example.com",
-      full_name: "Joe Bloggs"
+      full_name: "John Smith"
     }
   end
 
@@ -55,12 +51,7 @@ describe Authenticate::FindOrCreateUser do
 
     context "when auth data is incorrect" do
       let(:auth_data) do
-        {
-          provider: "facebook",
-          uid: "1234567",
-          email: "invalid email",
-          full_name: "Joe Bloggs"
-        }
+        build :omniauth, :facebook, uid: "1234567", email: "invalid email", name: "John Smith"
       end
 
       it "provides error" do

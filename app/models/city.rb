@@ -1,6 +1,6 @@
 class City < ApplicationRecord
   include PgSearch
-  include ReindexMultisearchTable
+  include ReindexMultisearch
 
   multisearchable against: %i[name country]
 

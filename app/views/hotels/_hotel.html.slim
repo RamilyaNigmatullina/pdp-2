@@ -27,7 +27,7 @@
   => hotel.distance_humanize
   br
 
-  - if policy(hotel).manage?
+  - if allowed_to?(:manage?, hotel)
     => link_to "Edit", edit_hotel_path(hotel)
     = link_to "Delete", hotel_path(hotel), method: :delete, data: { confirm: "Are you sure?" }
 

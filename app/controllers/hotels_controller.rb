@@ -1,5 +1,5 @@
 class HotelsController < ApplicationController
-  before_action :authorize_resource
+  before_action :authorize_resource!
 
   expose_decorated :hotels, :fetch_hotels
   expose_decorated :hotel
@@ -14,7 +14,7 @@ class HotelsController < ApplicationController
   end
 
   def create
-    hotel.save
+    self.hotel = CreateHotel.call(record: hotel).record
 
     respond_with hotel, location: hotels_path
   end
@@ -23,13 +23,13 @@ class HotelsController < ApplicationController
   end
 
   def update
-    hotel.update(hotel_params)
+    self.hotel = UpdateHotel.call(record: hotel, record_params: hotel_params).record
 
     respond_with hotel, location: hotels_path
   end
 
   def destroy
-    hotel.destroy
+    self.hotel = DestroyHotel.call(record: hotel).record
 
     respond_with hotel
   end
@@ -40,8 +40,8 @@ class HotelsController < ApplicationController
     FilteredHotels.new(Hotel.all, filter_params).all.page(params[:page])
   end
 
-  def authorize_resource
-    authorize hotel
+  def authorize_resource!
+    authorize! hotel
   end
 
   def filter_params
