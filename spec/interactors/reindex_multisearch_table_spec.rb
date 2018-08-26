@@ -26,7 +26,7 @@ describe ReindexMultisearchTable do
       end
     end
 
-    context "when searchable attributes were not changes" do
+    context "when searchable attributes were not changed" do
       before { hotel.update(latitude: 44.6437643) }
 
       it "doesn't rebuild multisearch table" do

@@ -2,6 +2,7 @@ class ReindexMultisearchTable
   include Interactor
 
   delegate :record, to: :context
+  delegate :class, :id, to: :record, prefix: true
 
   def call
     reindex_multisearch_table if searchable_attributes_changed? || record_deleted?
@@ -10,7 +11,7 @@ class ReindexMultisearchTable
   private
 
   def reindex_multisearch_table
-    PgSearch::Multisearch.rebuild(record.class)
+    PgSearch::Multisearch.rebuild(record_class)
   end
 
   def searchable_attributes_changed?
@@ -18,10 +19,10 @@ class ReindexMultisearchTable
   end
 
   def record_deleted?
-    !record.class.exists?(record.id)
+    !record_class.exists?(record_id)
   end
 
   def searchable_attributes
-    record.class::SEARCHABLE_ATTRIBUTES
+    record_class::SEARCHABLE_ATTRIBUTES
   end
 end
