@@ -1,29 +1,30 @@
 .hotel-item data-id=hotel.id
-  h4 = hotel.name
+  - cache hotel do
+    h4 = hotel.name
 
-  strong
-    ' Address:
-  = hotel.address
-  br
+    strong
+      ' Address:
+    = hotel.address
+    br
 
-  strong
-    ' Stars:
-  => hotel.stars
-  br
+    strong
+      ' Stars:
+    => hotel.stars
+    br
 
-  strong
-    ' Rating:
-  => hotel.rating
-  br
+    strong
+      ' Rating:
+    => hotel.rating
+    br
+
+    strong
+      ' Check-in time:
+    => hotel.check_in_time
+    br
 
   strong
     ' Distance:
   => hotel.distance_humanize
-  br
-
-  strong
-    ' Check-in time:
-  => hotel.check_in_time
   br
 
   - if policy(hotel).manage?
