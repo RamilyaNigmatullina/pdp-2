@@ -1,5 +1,5 @@
 class HotelsController < ApplicationController
-  before_action :authorize_resource
+  before_action :authorize_resource!
 
   expose_decorated :hotels, :fetch_hotels
   expose_decorated :hotel
@@ -40,8 +40,8 @@ class HotelsController < ApplicationController
     FilteredHotels.new(Hotel.all, filter_params).all.page(params[:page])
   end
 
-  def authorize_resource
-    authorize hotel
+  def authorize_resource!
+    authorize! hotel
   end
 
   def filter_params

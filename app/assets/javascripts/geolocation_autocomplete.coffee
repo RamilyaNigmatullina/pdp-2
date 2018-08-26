@@ -12,7 +12,7 @@ class GeolocationAutocomplete
 
   _autocompleteGeolocation: () =>
     $.ajax
-      url: "/geolocation"
+      url: "/geolocations"
       dataType: "json"
       data:
         address:
