@@ -2,8 +2,8 @@ require "rails_helper"
 
 describe HotelPolicy do
   let(:policy) { described_class.new(hotel, user: user) }
-  let(:hotel) { create :hotel }
-  let(:user) { create :user }
+  let(:hotel) { build_stubbed :hotel }
+  let(:user) { build_stubbed :user }
 
   describe "#index?" do
     subject { policy.apply(:index?) }
