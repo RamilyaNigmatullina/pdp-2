@@ -1,29 +1,31 @@
 require "rails_helper"
 
 describe HotelPolicy do
-  subject { described_class.new(user, hotel) }
-
+  let(:policy) { described_class.new(hotel, user: user) }
   let(:hotel) { create :hotel }
+  let(:user) { create :user }
 
-  context "when user is admin" do
-    let(:user) { create :user, :admin }
+  describe "#index?" do
+    subject { policy.apply(:new?) }
 
-    it { is_expected.to permit_action(:index) }
-    it { is_expected.to permit_action(:new) }
-    it { is_expected.to permit_action(:create) }
-    it { is_expected.to permit_action(:edit) }
-    it { is_expected.to permit_action(:update) }
-    it { is_expected.to permit_action(:destroy) }
+    it { is_expected.to eq true }
+
+    context "when the user is admin" do
+      let(:user) { build_stubbed :user, :admin }
+
+      it { is_expected.to eq true }
+    end
   end
 
-  context "when user is not admin" do
-    let(:user) { create :user }
+  describe "#manage?" do
+    subject { policy.apply(:new?) }
 
-    it { is_expected.to permit_action(:index) }
-    it { is_expected.not_to permit_action(:new) }
-    it { is_expected.not_to permit_action(:create) }
-    it { is_expected.not_to permit_action(:edit) }
-    it { is_expected.not_to permit_action(:update) }
-    it { is_expected.not_to permit_action(:destroy) }
+    it { is_expected.to eq false }
+
+    context "when the user is admin" do
+      let(:user) { build_stubbed :user, :admin }
+
+      it { is_expected.to eq true }
+    end
   end
 end

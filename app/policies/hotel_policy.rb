@@ -1,5 +1,5 @@
 class HotelPolicy < ApplicationPolicy
-  alias_rule :new?, to: :manage?
+  alias_rule :new?, :create?, to: :manage?
 
   def index?
     true
