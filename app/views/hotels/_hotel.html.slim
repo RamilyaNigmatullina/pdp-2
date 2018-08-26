@@ -26,7 +26,7 @@
   => hotel.check_in_time
   br
 
-  - if policy(hotel).manage?
+  - if allowed_to?(:manage?, hotel.to_model)
     => link_to "Edit", edit_hotel_path(hotel)
     = link_to "Delete", hotel_path(hotel), method: :delete, data: { confirm: "Are you sure?" }
 

@@ -1,9 +1,11 @@
 class HotelPolicy < ApplicationPolicy
+  alias_rule :new?, to: :manage?
+
   def index?
     true
   end
 
   def manage?
-    user && user.admin?
+    user&.admin?
   end
 end

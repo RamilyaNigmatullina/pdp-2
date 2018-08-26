@@ -2,15 +2,20 @@ module Authorization
   extend ActiveSupport::Concern
 
   included do
-    include Pundit
-    rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+    verify_authorized unless: :devise_controller?
+
+    rescue_from ActionPolicy::Unauthorized, with: :user_not_authorized
   end
 
   private
 
   def user_not_authorized
-    flash[:notice] = I18n.t(:not_authorized_error, scope: :pundit)
+    flash[:notice] = I18n.t(:unauthorized_error, scope: :action_policy)
 
     redirect_to root_path
+  end
+
+  def authorize_resource!
+    raise NotImplementedError
   end
 end

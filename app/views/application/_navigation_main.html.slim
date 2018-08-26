@@ -1,5 +1,5 @@
 .top-bar-left
   ul.menu
     li = link_to "Hotels", root_path
-    - if policy(Hotel.new).manage?
+    - if allowed_to?(:manage?, Hotel)
       li = link_to "New Hotel", new_hotel_path, active: :exclusive, wrap_tag: :li
