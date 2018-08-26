@@ -15,6 +15,12 @@ module Authorization
     redirect_to root_path
   end
 
+  def policy_for(record:, **opts)
+    record = record.model while record.is_a?(Draper::Decorator)
+
+    super(record: record, **opts)
+  end
+
   def authorize_resource!
     raise NotImplementedError
   end

@@ -6,7 +6,7 @@ describe HotelPolicy do
   let(:user) { create :user }
 
   describe "#index?" do
-    subject { policy.apply(:new?) }
+    subject { policy.apply(:index?) }
 
     it { is_expected.to eq true }
 
@@ -18,7 +18,7 @@ describe HotelPolicy do
   end
 
   describe "#manage?" do
-    subject { policy.apply(:new?) }
+    subject { policy.apply(:manage?) }
 
     it { is_expected.to eq false }
 
