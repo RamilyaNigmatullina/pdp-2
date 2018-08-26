@@ -20,8 +20,4 @@ module Authorization
 
     super(record: record, **opts)
   end
-
-  def authorize_resource!
-    raise NotImplementedError
-  end
 end
