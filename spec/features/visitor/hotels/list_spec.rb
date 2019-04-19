@@ -1,8 +1,6 @@
 require "rails_helper"
 
 feature "List Hotels" do
-  include_context :stubbed_geolocation
-
   let!(:hotel) do
     create :hotel,
       name: "Hotel complex Tatarstan",

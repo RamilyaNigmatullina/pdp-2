@@ -1,0 +1,33 @@
+.row
+  .medium-10.columns
+    h2
+      = hotel.name
+
+    strong
+      ' Address:
+    = hotel.address
+    br
+
+    strong
+      ' Stars:
+    => hotel.stars
+    br
+
+    strong
+      ' Rating:
+    => hotel.rating
+    br
+
+    strong
+      ' Check-in time:
+    => hotel.check_in_time
+    br
+
+    strong
+      ' Distance:
+    => hotel.distance_humanize
+    br
+
+    - if allowed_to?(:manage?, hotel)
+      => link_to "Edit", edit_hotel_path(hotel)
+      = link_to "Delete", hotel_path(hotel), method: :delete, data: { confirm: "Are you sure?" }

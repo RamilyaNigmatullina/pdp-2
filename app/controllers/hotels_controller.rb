@@ -2,12 +2,15 @@ class HotelsController < ApplicationController
   before_action :authorize_resource!
 
   expose_decorated :hotels, :fetch_hotels
-  expose_decorated :hotel
+  expose_decorated :hotel, scope: -> { Hotel.near(current_coordinates) }
   expose :search_form, -> { SearchForm.new(search_form_params) }
 
   helper_method :filter_params
 
   def index
+  end
+
+  def show
   end
 
   def new
@@ -50,7 +53,7 @@ class HotelsController < ApplicationController
 
   def near_params
     {
-      radius: params.dig(:hotel, :radius),
+      radius: search_form_params[:radius],
       coordinates: current_coordinates
     }
   end

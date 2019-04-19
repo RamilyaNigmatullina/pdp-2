@@ -2,7 +2,6 @@ require "rails_helper"
 
 feature "Update Hotel" do
   include_context :user_signed_in_as_admin
-  include_context :stubbed_geolocation
 
   let(:hotel) do
     create :hotel,
