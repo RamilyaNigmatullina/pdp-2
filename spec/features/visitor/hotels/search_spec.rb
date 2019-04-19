@@ -1,8 +1,6 @@
 require "rails_helper"
 
 feature "Search Hotels" do
-  include_context :stubbed_geolocation
-
   background do
     create :hotel,
       name: "Hotel complex Tatarstan",

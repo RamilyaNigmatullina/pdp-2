@@ -1,6 +1,6 @@
 .hotel-item data-id=hotel.id
   - cache hotel do
-    h4 = hotel.name
+    h4 = link_to hotel.name, hotel_path(hotel)
 
     strong
       ' Address:
