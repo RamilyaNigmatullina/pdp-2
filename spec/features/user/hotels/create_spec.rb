@@ -12,7 +12,8 @@ feature "Create Hotel" do
       latitude: "55.786463",
       rating: "7.4",
       stars: "3",
-      check_in_time: "22:00"
+      check_in_time: "22:00",
+      city: "Kazan"
     }
   end
 

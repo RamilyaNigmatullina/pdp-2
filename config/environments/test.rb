@@ -44,8 +44,8 @@ Rails.application.configure do
   config.active_support.test_order = :sorted
 end
 
-class ActionDispatch::Request
-  def location
-    Geocoder.search("176.52.96.112").first
-  end
-end
+# class ActionDispatch::Request
+#   def location
+#     Geocoder.search("176.52.96.112").first
+#   end
+# end

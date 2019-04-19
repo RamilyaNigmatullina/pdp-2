@@ -1,6 +1,7 @@
 require "rails_helper"
 
 feature "Search Hotels" do
+  # TODO: remove or update
   include_context :stubbed_geolocation
 
   background do
@@ -24,6 +25,7 @@ feature "Search Hotels" do
   scenario "Visitor searches hotels" do
     visit hotels_path
 
+    # TODO: formulaic
     fill_in "Search", with: "Hotel complex Tatarstan"
     fill_in "Min Rating", with: "7"
     fill_in "Max Rating", with: "8"

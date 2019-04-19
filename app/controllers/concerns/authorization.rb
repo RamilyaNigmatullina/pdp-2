@@ -16,7 +16,7 @@ module Authorization
   end
 
   def policy_for(record:, **opts)
-    record = record.model while record.is_a?(Draper::Decorator)
+    record = record.model if record.is_a?(Draper::Decorator)
 
     super(record: record, **opts)
   end
