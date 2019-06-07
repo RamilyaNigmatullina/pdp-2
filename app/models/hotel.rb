@@ -5,8 +5,6 @@ class Hotel < ApplicationRecord
 
   multisearchable against: SEARCHABLE_ATTRIBUTES
 
-  geocoded_by %i[latitude longitude]
-
   belongs_to :city
 
   validates :name, :address, :latitude, :longitude, :rating, :stars, presence: true

@@ -1,9 +1,8 @@
 class HotelDecorator < ApplicationDecorator
-  delegate :id, :name, :address, :stars, :rating, :longitude, :latitude, :city_id, :check_in_time
+  delegate :id, :name, :address, :stars, :rating, :latitude, :longitude, :city_id, :check_in_time
+  delegate :distance, to: :distance_calculator
 
   def distance_humanize
-    return "-" unless object.respond_to?(:distance)
-
     format(I18n.t(:distance, scope: "decorators.hotel"), distance: rounded_distance)
   end
 
@@ -16,6 +15,10 @@ class HotelDecorator < ApplicationDecorator
   private
 
   def rounded_distance
-    object.distance.round(1)
+    distance.round(1)
+  end
+
+  def distance_calculator
+    DistanceCalculator.new(current_coordinates, [latitude, longitude])
   end
 end

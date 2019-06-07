@@ -48,6 +48,20 @@ class FilteredHotels
   def by_near(relation, near_params)
     return relation unless near_params[:coordinates].all?
 
-    relation.near(near_params[:coordinates], near_params[:radius].presence || DEFAULT_RADIUS)
+    hotels = hotels_with_distance(relation, near_params).compact
+    hotel_ids = hotels.map { |hotel| hotel[:hotel_id] }
+    relation.where(id: hotel_ids)
+  end
+
+  def hotels_with_distance(relation, near_params)
+    relation.map do |hotel|
+      distance = distance_beetwen(near_params, hotel)
+
+      { hotel_id: hotel.id, distance: distance } if distance <= near_params[:radius]
+    end
+  end
+
+  def distance_beetwen(near_params, hotel)
+    DistanceCalculator.new(near_params[:coordinates], [hotel.latitude, hotel.longitude]).distance
   end
 end
