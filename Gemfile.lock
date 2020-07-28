@@ -194,7 +194,7 @@ GEM
       rake
     jasmine-core (2.5.2)
     jasmine-jquery-rails (2.0.3)
-    json (2.0.3)
+    json (2.3.1)
     jwt (1.5.6)
     kaminari (1.0.1)
       activesupport (>= 4.1.0)
