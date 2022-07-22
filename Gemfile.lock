@@ -442,7 +442,7 @@ GEM
     tilt (2.0.6)
     timecop (0.9.1)
     timezone (1.2.12)
-    tzinfo (1.2.5)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     uglifier (3.0.4)
       execjs (>= 0.3.0, < 3)
